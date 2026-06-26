@@ -1,0 +1,87 @@
+# KS-0001 — Knowledge Object Model
+
+Document ID: KS-0001
+Title: Knowledge Object Model
+Version: 0.1.0
+Status: Draft
+Created: 2026-06-25
+Last Updated: 2026-06-25
+Authority: Standard
+Phase: Phase 1 — Universal Knowledge Standard
+Milestone: 1.1 — Knowledge Object Model
+Depends On: TB-0000 — Vision and Purpose; TB-0001 — Architecture Principles; TB-0002 — Layered Architecture; TB-0003 — Governance Model
+Supersedes: None
+Superseded By: None
+Related: None
+
+## Normative Language
+
+The words SHALL, MUST, SHOULD, MAY, and RECOMMENDED are interpreted consistently throughout The Brain Standard.
+
+- SHALL / MUST means a mandatory requirement.
+- SHOULD means a strong recommendation.
+- MAY means an optional implementation choice.
+
+These terms define how requirements, recommendations, permissions, constraints, and knowledge-model rules are interpreted within KS-0001.
+
+Where conflicts arise between knowledge objects, knowledge records, metadata, relationships, provenance, lifecycle states, source references, storage behavior, workflows, agents, implementations, or future specifications, the constitutional foundation SHALL guide interpretation and resolution.
+
+KS-0001 is subordinate to TB-0000, TB-0001, TB-0002, and TB-0003.
+
+If KS-0001 appears to conflict with a constitutional document, the constitutional document takes precedence unless the constitutional document is formally revised through governance.
+
+## Terminology
+
+Throughout this document:
+
+- The Brain refers to the overall project and ecosystem.
+- The Brain Standard refers to the implementation-independent architectural standard defined by the project.
+- Knowledge Operating System or KOS refers to the role fulfilled by The Brain Standard as a durable foundation for organizing, preserving, navigating, and automating knowledge.
+- Universal Knowledge Standard refers to Layer 1 of The Brain Standard, responsible for defining knowledge meaning, object identity, metadata, relationships, provenance, lifecycle, authority, privacy, validation, and interpretation.
+- Knowledge Object refers to a discrete unit of structured knowledge managed under The Brain Standard.
+- Knowledge Record refers to a structured representation of knowledge created from, about, or in response to source material, human reasoning, agent activity, or governed workflows.
+- Source Material refers to original files, documents, messages, images, recordings, datasets, web pages, or other artifacts used as evidence, input, or reference material.
+- Object Identity refers to the stable identity of a Knowledge Object independent of filename, folder path, storage location, application-specific identifier, user interface, or implementation.
+- Metadata refers to explicit descriptive, structural, governance, lifecycle, privacy, provenance, or relationship information associated with a Knowledge Object or Knowledge Record.
+- Required Metadata refers to metadata that MUST be present for a Knowledge Object or Knowledge Record to be valid under this standard.
+- Optional Metadata refers to metadata that MAY be included when useful but is not required for basic validity.
+- Provenance refers to information that identifies the origin, source, reasoning, transformation, creator, agent, workflow, or evidence associated with a Knowledge Object or Knowledge Record.
+- Source Reference refers to a traceable reference from a Knowledge Record to source material that supports, explains, or contextualizes the record.
+- Relationship refers to an explicit connection between Knowledge Objects, Knowledge Records, source material, standards, decisions, workflows, implementations, or other governed entities.
+- Lifecycle State refers to the current state of a Knowledge Object or Knowledge Record, such as Draft, Review, Approved, Superseded, Deprecated, Archived, or other future governed states.
+- Privacy Classification refers to explicit metadata describing the permitted visibility, access, exposure, or handling expectations of a Knowledge Object or Knowledge Record.
+- Authority Level refers to the governance weight or trust status assigned to a document, record, object, source, or decision.
+- Validation refers to the process of checking whether a Knowledge Object or Knowledge Record satisfies the structural, metadata, provenance, relationship, lifecycle, privacy, and compatibility expectations defined by the relevant standards or specifications.
+- Implementation refers to any software, vault, database, file system, interface, agent system, workflow environment, or tool that realizes The Brain Standard in practice.
+
+## 1. Purpose
+
+The purpose of KS-0001 is to define the foundational unit of knowledge within The Brain Standard.
+
+KS-0001 establishes what a Knowledge Object is, how a Knowledge Object is represented through Knowledge Records, how Knowledge Objects differ from source material, how object identity is preserved, what metadata is required, how relationships are represented, how provenance is maintained, and how humans, agents, workflows, and implementations should interpret structured knowledge.
+
+The Knowledge Object Model exists to ensure that knowledge remains:
+
+- implementation-independent;
+- portable across storage systems and tools;
+- understandable to humans;
+- interpretable by AI systems;
+- traceable to source material where applicable;
+- reviewable over time;
+- protected by explicit privacy boundaries;
+- governed through clear lifecycle and authority expectations;
+- extensible without losing meaning.
+
+KS-0001 defines the meaning and minimum structural expectations of Knowledge Objects and Knowledge Records.
+
+KS-0001 does not define folder layouts, database schemas, application behavior, workflow execution steps, agent permissions, interface behavior, or daily operating procedures. Those concerns belong to later storage standards, agent standards, workflow standards, implementation documents, specifications, and operational guides.
+
+The primary purpose of KS-0001 is to prevent knowledge meaning from becoming dependent on storage location, filenames, tools, agents, workflows, or implementation-specific behavior.
+
+A Knowledge Object SHALL retain its identity and meaning even when it is moved, renamed, copied, migrated, exported, imported, indexed, summarized, displayed differently, or processed by an agent or workflow.
+
+A compliant system may store or display Knowledge Objects in many ways, but the meaning of the Knowledge Object MUST remain defined by explicit identity, metadata, relationships, provenance, lifecycle state, authority, privacy classification, and governed structure.
+
+KS-0001 is the first standard within Phase 1 — Universal Knowledge Standard.
+
+Its success is measured by whether future knowledge standards, storage standards, agent standards, workflow standards, specifications, and implementations can rely on a stable, explicit, portable, and reviewable model of knowledge.
