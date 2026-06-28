@@ -543,7 +543,7 @@ A publication, export, migration, synchronization, indexing, backup, implementat
 
 WF-0004 is successful when publication, export, migration, synchronization, indexing, backup, implementation exposure, agent exposure, and downstream use improve usability and portability without allowing operational exposure, tool behavior, storage placement, agent activity, workflow completion, implementation visibility, validation results, or approval status to redefine governed meaning or permission.
 
- ## 4. Downstream-Use Intake and Candidate Identification
+## 4. Downstream-Use Intake and Candidate Identification
 
 Downstream-Use Intake and Candidate Identification define how governed entities are identified, registered, assessed, and routed before publication, export, migration, synchronization, indexing, backup, implementation exposure, agent exposure, or downstream use.
 
@@ -1302,3 +1302,1021 @@ A downstream-use workflow SHOULD preserve compatibility notes where a representa
 A downstream-use workflow SHOULD preserve enough information to allow future review, validation, repair, migration, import, export, restoration, synchronization, indexing, audit, or governance review where the package affects long-term use.
 
 Packaging, Representation, and Format Handling are successful when governed entities can be prepared for use across tools, systems, agents, workflows, publications, exports, migrations, synchronizations, indexes, backups, and downstream environments without losing meaning, weakening privacy, overstating authority, hiding validation limits, breaking source traceability, breaking relationship meaning, or treating a technical representation as governed permission.
+
+
+## 10. Publication, Export, and Migration Handling
+
+Publication, Export, and Migration Handling define how governed entities are published, exported, migrated, packaged, transferred, exposed, or made available outside their prior storage, workflow, implementation, privacy, authority, or downstream-use boundary.
+
+Publication, export, and migration MAY occur only within an explicit Clearance Scope where clearance is required by WF-0004.
+
+Publication, export, and migration MUST NOT occur merely because a governed entity is approved, authoritative, valid, maintained, indexed, backed up, synchronized, visible in an implementation, available to an agent, stored in an export area, or technically easy to transfer.
+
+Publication Handling applies when a governed entity is made available beyond its prior access, privacy, authority, review, implementation, workflow, agent, or downstream-use boundary.
+
+Publication MAY include:
+
+- internal publication;
+- external publication;
+- limited publication;
+- public-facing publication;
+- private publication;
+- controlled publication;
+- redacted publication;
+- summary publication;
+- implementation-mediated publication;
+- agent-assisted publication;
+- publication to a repository, website, document set, knowledge base, package, archive, feed, interface, or other publication target.
+
+A publication workflow SHOULD identify or support identification of:
+
+- the publication candidate;
+- the publication scope;
+- the publication destination;
+- the intended audience;
+- the publication format;
+- the publication representation;
+- the clearance decision;
+- the approval scope where applicable;
+- the Privacy Classification;
+- the Authority Level;
+- the Lifecycle State;
+- the Validation State or validation results;
+- the Source References and provenance preserved, redacted, summarized, suppressed, or excluded;
+- the relationships preserved, redacted, summarized, suppressed, or excluded;
+- the metadata preserved, redacted, summarized, transformed, suppressed, or excluded;
+- the redaction status;
+- the publication limitations;
+- the publication warnings;
+- the publication log;
+- the review or re-review conditions where applicable.
+
+Publication MUST NOT imply unrestricted authority, unrestricted export permission, unrestricted migration permission, unrestricted synchronization permission, unrestricted indexing permission, unrestricted backup permission, unrestricted agent permission, unrestricted implementation permission, or unrestricted downstream-use permission.
+
+A published representation MUST remain distinguishable from the original governed entity where publication uses redaction, summarization, transformation, formatting, extraction, packaging, or partial representation.
+
+A publication workflow MUST preserve privacy boundaries.
+
+A publication workflow MUST NOT publish restricted material unless the applicable Privacy Classification, clearance decision, review process, and downstream-use scope explicitly permit that publication.
+
+A publication workflow SHOULD preserve enough provenance, Source Reference context, relationship context, validation context, authority context, lifecycle context, and clearance context for future review where publication affects interpretation, trust, compatibility, governance, or downstream use.
+
+Export Handling applies when governed material is produced from a compliant environment for use elsewhere.
+
+Export MAY include:
+
+- Knowledge Object export;
+- Knowledge Record export;
+- Source Material export;
+- metadata export;
+- relationship export;
+- Source Reference export;
+- provenance export;
+- validation-result export;
+- workflow-log export;
+- publication-package export;
+- migration-package export;
+- implementation-package export;
+- agent-readable export;
+- archive export;
+- backup-related export;
+- redacted export;
+- partial export;
+- controlled export.
+
+An export workflow SHOULD identify or support identification of:
+
+- the export candidate;
+- the export scope;
+- the export destination;
+- the export requester where applicable;
+- the export package contents;
+- the export format;
+- the export representation;
+- the export manifest where applicable;
+- the clearance decision;
+- the Privacy Classification;
+- the Authority Level;
+- the Lifecycle State;
+- the Validation State or validation results;
+- the included Source References;
+- the included provenance;
+- the included relationships;
+- the included metadata;
+- excluded, redacted, suppressed, summarized, transformed, or limited material;
+- export limitations;
+- export warnings;
+- import expectations where applicable;
+- compatibility expectations where applicable;
+- export provenance;
+- export logs.
+
+An export MUST preserve Object Identity where Object Identity is required for interpretation, portability, import, migration, synchronization, indexing, backup, restoration, implementation use, agent use, or downstream use.
+
+An export MUST preserve required metadata where metadata affects interpretation, source traceability, provenance, relationships, lifecycle state, authority, privacy, validation, compatibility, governance, import, migration, synchronization, indexing, backup, implementation exposure, agent exposure, or downstream use.
+
+An export MUST NOT imply that exported material is approved for publication, migration, synchronization, indexing, backup, agent exposure, implementation exposure, or broader downstream use beyond the Clearance Scope.
+
+An export workflow MUST preserve privacy boundaries.
+
+An export workflow MUST NOT export restricted material unless the applicable Privacy Classification, clearance decision, review process, and export scope explicitly permit that export.
+
+A redacted export MUST remain distinguishable from a full export.
+
+A partial export MUST remain distinguishable from a complete export.
+
+A transformed export MUST remain distinguishable from the original governed representation where transformation affects meaning, provenance, validation, privacy, authority, lifecycle state, relationships, compatibility, or downstream use.
+
+Migration Handling applies when governed material moves from one storage system, implementation, representation, schema, vault, repository, database, file format, workflow environment, agent environment, tool environment, or standards version to another.
+
+Migration MAY include:
+
+- storage migration;
+- schema migration;
+- format migration;
+- vault migration;
+- repository migration;
+- implementation migration;
+- agent-environment migration;
+- workflow-environment migration;
+- archive migration;
+- backup restoration migration;
+- standards-version migration;
+- import/export-mediated migration;
+- redacted migration;
+- partial migration;
+- controlled migration.
+
+A migration workflow SHOULD identify or support identification of:
+
+- the migration candidate;
+- the migration scope;
+- the source environment;
+- the target environment;
+- the source representation;
+- the target representation;
+- the migration mapping;
+- the migration package;
+- the migration validator where applicable;
+- the clearance decision;
+- the Privacy Classification;
+- the Authority Level;
+- the Lifecycle State;
+- the Validation State or validation results;
+- Object Identity preservation expectations;
+- metadata preservation expectations;
+- Source Reference preservation expectations;
+- provenance preservation expectations;
+- relationship preservation expectations;
+- lifecycle preservation expectations;
+- authority preservation expectations;
+- privacy preservation expectations;
+- validation preservation expectations;
+- compatibility expectations;
+- known lossy transformations;
+- known unresolved mappings;
+- migration limitations;
+- migration warnings;
+- migration provenance;
+- migration logs.
+
+Migration MUST preserve Object Identity unless a separate governed identity process explicitly permits an identity change.
+
+Migration MUST preserve required metadata, Source References, provenance, relationships, Lifecycle State, Authority Level, Privacy Classification, Validation State, validation results, approval scope, maintenance context, and clearance context where those affect interpretation, compatibility, governance, or downstream use.
+
+Migration MUST NOT silently collapse, rename, remove, reinterpret, regenerate, expose, suppress, approve, declassify, validate, supersede, deprecate, archive, delete, overwrite, or broaden use of governed entities.
+
+Migration MUST NOT allow target-system defaults, implementation behavior, schema convenience, folder layout, import assumptions, export assumptions, indexing behavior, synchronization behavior, backup behavior, agent behavior, or user-interface behavior to redefine governed meaning.
+
+A migration workflow SHOULD identify lossy transformations before migration where a target representation cannot fully preserve source meaning, metadata, relationships, Source References, provenance, Lifecycle State, Authority Level, Privacy Classification, Validation, compatibility, or downstream-use context.
+
+Lossy migration SHOULD require review, limitation, repair, supplemental mapping, preservation of original representations, or escalation where loss affects governed meaning, privacy, authority, validation, source traceability, relationships, compatibility, auditability, or downstream use.
+
+Publication, Export, and Migration Handling are successful when governed entities can be published, exported, or migrated without losing meaning, weakening privacy, overstating authority, hiding validation limits, breaking Object Identity, breaking source traceability, breaking relationship meaning, or allowing technical transfer to become governed permission.
+
+## 11. Synchronization, Indexing, Backup, and Recovery Handling
+
+Synchronization, Indexing, Backup, and Recovery Handling define how governed entities are copied, mirrored, cached, made searchable, preserved, restored, recovered, or made available across storage environments, implementations, agents, workflows, repositories, devices, services, indexes, archives, backups, or future systems.
+
+Synchronization, indexing, backup, and recovery MAY support publication, export, migration, implementation exposure, agent exposure, or downstream use.
+
+Synchronization, indexing, backup, and recovery MUST NOT create publication permission, export permission, migration permission, implementation permission, agent permission, authority, privacy clearance, approval, validation, lifecycle transition, or downstream-use permission by themselves.
+
+Synchronization Handling applies when governed material is copied, mirrored, transmitted, replicated, cached, or otherwise kept consistent across devices, repositories, vaults, services, tools, implementations, storage environments, workflow environments, agent environments, or future systems.
+
+A synchronization workflow SHOULD identify or support identification of:
+
+- the synchronization candidate;
+- the synchronization scope;
+- the synchronization source;
+- the synchronization target;
+- the synchronization mechanism where applicable;
+- the clearance decision where required;
+- the Privacy Classification;
+- the Authority Level;
+- the Lifecycle State;
+- the Validation State or validation results;
+- whether Source References are synchronized;
+- whether provenance is synchronized;
+- whether relationships are synchronized;
+- whether metadata is synchronized;
+- whether restricted material is synchronized;
+- whether redacted representations are synchronized;
+- whether generated files, indexes, caches, logs, or implementation files are synchronized;
+- synchronization limitations;
+- synchronization warnings;
+- synchronization logs.
+
+Synchronization MUST preserve privacy boundaries.
+
+A governed entity MUST NOT be synchronized into a target environment that is incompatible with its Privacy Classification unless a governed privacy review and clearance decision explicitly permits that synchronization.
+
+Synchronization MUST preserve Object Identity where synchronized representations remain connected to the governed entity.
+
+Synchronization MUST preserve or protect Source References, provenance, relationships, metadata, lifecycle state, authority level, validation state, approval scope, maintenance context, and clearance scope where those affect interpretation, compatibility, governance, or downstream use.
+
+Synchronization MUST NOT silently publish, export, declassify, approve, validate, supersede, deprecate, archive, delete, overwrite, expose, or broaden use of a governed entity.
+
+Indexing Handling applies when governed material is made searchable, retrievable, ranked, embedded, summarized, vectorized, cached, tagged, categorized, or otherwise discoverable by a system, agent, workflow, validator, implementation, search tool, graph tool, database, model, or future retrieval mechanism.
+
+An indexing workflow SHOULD identify or support identification of:
+
+- the indexing candidate;
+- the indexing scope;
+- the indexing mechanism where applicable;
+- the index target;
+- the clearance decision where required;
+- the Privacy Classification;
+- the Authority Level;
+- the Lifecycle State;
+- the Validation State or validation results;
+- whether content is indexed;
+- whether metadata is indexed;
+- whether relationships are indexed;
+- whether Source References are indexed;
+- whether provenance is indexed;
+- whether workflow logs are indexed;
+- whether agent outputs are indexed;
+- whether restricted material is indexed;
+- whether redacted representations are indexed;
+- whether embeddings, summaries, caches, generated metadata, or derived records are created;
+- indexing limitations;
+- indexing warnings;
+- indexing logs.
+
+Indexing MUST preserve privacy boundaries.
+
+A governed entity MUST NOT be indexed, embedded, summarized, cached, vectorized, ranked, or made searchable where that indexing would expose restricted information beyond the permitted Privacy Classification and clearance scope.
+
+Indexing MUST NOT silently create authority.
+
+Search ranking, graph centrality, embedding similarity, retrieval frequency, citation frequency, backlink count, model confidence, or implementation visibility MUST NOT become Authority Level, validation, approval, clearance, or truth.
+
+Indexing MUST NOT silently create relationships.
+
+An index may suggest discoverability, similarity, retrieval, or proximity.
+
+Indexing output MUST NOT become a governed relationship unless a governed relationship process or specification explicitly creates, reviews, and preserves that relationship.
+
+Indexing MUST NOT silently create downstream-use permission.
+
+An indexed entity MAY be discoverable within a cleared scope.
+
+Discoverability does not create publication permission, export permission, migration permission, synchronization permission, backup permission, implementation permission, agent permission, or broader downstream-use permission.
+
+Backup Handling applies when governed material is copied or preserved for restoration, continuity, archival, audit, migration, disaster recovery, or long-term preservation.
+
+A backup workflow SHOULD identify or support identification of:
+
+- the backup candidate;
+- the backup scope;
+- the backup target;
+- the backup method where applicable;
+- the backup schedule where applicable;
+- the clearance decision where required;
+- the Privacy Classification;
+- the Authority Level;
+- the Lifecycle State;
+- the Validation State or validation results;
+- whether content is backed up;
+- whether metadata is backed up;
+- whether relationships are backed up;
+- whether Source References are backed up;
+- whether provenance is backed up;
+- whether workflow logs are backed up;
+- whether agent outputs are backed up;
+- whether implementation files are backed up;
+- whether indexes or caches are backed up;
+- whether restricted material is backed up;
+- backup limitations;
+- backup warnings;
+- backup logs.
+
+Backup MUST preserve privacy boundaries.
+
+A backup target MUST be compatible with the Privacy Classification of the backed-up material.
+
+Backup existence MUST NOT imply export permission, publication permission, synchronization permission, indexing permission, migration permission, implementation permission, agent permission, or downstream-use permission.
+
+Backup existence MUST NOT imply that backed-up material is current, approved, authoritative, valid, maintained, publishable, exportable, migratable, synchronizable, indexable, agent-readable, implementation-exposable, or downstream-usable.
+
+Recovery Handling applies when governed material is restored, reconstructed, recovered, repaired, rehydrated, reindexed, reimported, remigrated, or otherwise brought back into use after loss, corruption, deletion, system failure, migration failure, synchronization failure, indexing failure, backup restoration, archival retrieval, or implementation replacement.
+
+A recovery workflow SHOULD identify or support identification of:
+
+- the recovered entity;
+- the recovery source;
+- the recovery target;
+- the recovery scope;
+- the recovery reason;
+- the recovery method where applicable;
+- the Privacy Classification;
+- the Authority Level;
+- the Lifecycle State;
+- the Validation State or validation results;
+- whether Object Identity was preserved;
+- whether metadata was preserved;
+- whether relationships were preserved;
+- whether Source References were preserved;
+- whether provenance was preserved;
+- whether workflow logs were preserved;
+- whether agent outputs were preserved;
+- whether implementation files were preserved;
+- whether indexes or caches were regenerated;
+- whether recovered material requires validation;
+- whether recovered material requires review;
+- whether recovered material requires repair;
+- whether recovered material requires quarantine;
+- recovery limitations;
+- recovery warnings;
+- recovery logs.
+
+Recovered material SHOULD NOT automatically return to normal use where recovery creates uncertainty about identity, metadata, relationships, Source References, provenance, Lifecycle State, Authority Level, Privacy Classification, Validation, compatibility, approval scope, maintenance state, publication status, export status, migration status, synchronization status, indexing status, backup status, implementation exposure, agent exposure, or downstream-use clearance.
+
+Recovered material SHOULD be validated, reviewed, repaired, limited, quarantined, or escalated where recovery creates uncertainty affecting governed meaning, privacy, authority, validation, source traceability, relationships, compatibility, governance, or downstream use.
+
+Synchronization, Indexing, Backup, and Recovery Handling are successful when governed entities remain searchable, portable, restorable, recoverable, and usable across environments without allowing synchronization, indexing, backup, restoration, search visibility, embeddings, caches, replicas, archives, or recovery artifacts to redefine governed meaning or permission.
+
+## 12. Agent, Implementation, and Downstream-Use Boundaries
+
+Agent, Implementation, and Downstream-Use Boundaries define how WF-0004 preserves separation between agent assistance, implementation behavior, operational exposure, and governed downstream-use permission.
+
+Agents MAY assist publication, export, migration, synchronization, indexing, backup, implementation exposure, agent exposure, and downstream-use workflows.
+
+Agents MUST remain within the operating boundaries defined by the applicable agent standards, workflow standards, privacy classifications, authority expectations, validation expectations, lifecycle expectations, storage expectations, implementation expectations, and clearance scope.
+
+Agent assistance MAY include:
+
+- identifying downstream-use candidates;
+- preparing intake summaries;
+- detecting privacy risks;
+- detecting authority risks;
+- detecting lifecycle issues;
+- detecting validation issues;
+- identifying Source References;
+- identifying provenance;
+- identifying relationships;
+- identifying packaging requirements;
+- identifying redaction needs;
+- identifying export risks;
+- identifying migration risks;
+- identifying synchronization risks;
+- identifying indexing risks;
+- identifying backup risks;
+- identifying implementation-exposure risks;
+- identifying downstream-use risks;
+- drafting clearance reports;
+- drafting package manifests;
+- drafting export manifests;
+- drafting migration maps;
+- drafting publication notes;
+- drafting warning labels;
+- preparing review checklists;
+- supporting validation;
+- supporting compatibility review;
+- recommending escalation.
+
+Agent assistance MUST remain traceable where agent activity affects privacy, authority, lifecycle state, validation, Source References, provenance, relationships, packaging, publication, export, migration, synchronization, indexing, backup, implementation exposure, agent exposure, clearance, or downstream use.
+
+An agent MUST NOT silently:
+
+- clear a governed entity for downstream use;
+- publish a governed entity;
+- export a governed entity;
+- migrate a governed entity;
+- synchronize a governed entity;
+- index a governed entity;
+- back up a governed entity where backup affects privacy or downstream use;
+- expose a governed entity to an implementation;
+- expose a governed entity to another agent;
+- declassify a governed entity;
+- broaden access to a governed entity;
+- assign final authority;
+- approve a governed entity;
+- reapprove a governed entity;
+- reject a governed entity;
+- supersede a governed entity;
+- deprecate a governed entity;
+- archive a governed entity;
+- delete a governed entity;
+- overwrite a governed entity;
+- redefine Object Identity;
+- suppress validation errors;
+- suppress privacy restrictions;
+- suppress source limitations;
+- suppress provenance limitations;
+- suppress relationship limitations;
+- convert agent confidence into authority;
+- convert agent output into governed truth;
+- convert agent access into clearance;
+- convert agent usefulness into permission.
+
+An agent MAY execute a downstream-use action only where a governed workflow, permission boundary, clearance decision, and applicable standard explicitly allow that operation within a defined scope.
+
+Agent-generated outputs SHOULD remain distinguishable from human-reviewed, approved, authoritative, privacy-cleared, validated, published, exported, migrated, synchronized, indexed, backed-up, implementation-exposed, agent-exposed, or downstream-cleared entities unless a governed workflow or specification explicitly defines that conversion.
+
+Implementation behavior MAY support publication, export, migration, synchronization, indexing, backup, implementation exposure, agent exposure, and downstream use.
+
+Implementation behavior MUST NOT define governed meaning or governed permission by itself.
+
+Implementation behavior MAY include:
+
+- displaying governed entities;
+- filtering governed entities;
+- hiding governed entities;
+- routing governed entities;
+- indexing governed entities;
+- caching governed entities;
+- synchronizing governed entities;
+- backing up governed entities;
+- exporting governed entities;
+- publishing governed entities;
+- migrating governed entities;
+- generating packages;
+- generating manifests;
+- generating previews;
+- generating summaries;
+- generating embeddings;
+- creating implementation-specific links;
+- creating implementation-specific metadata;
+- creating implementation-specific states;
+- creating implementation-specific logs;
+- exposing governed entities to agents;
+- exposing governed entities to users;
+- exposing governed entities to downstream systems.
+
+Implementation behavior MUST remain subordinate to the applicable standards.
+
+Implementation visibility MUST NOT become approval, authority, validation, Privacy Classification, Lifecycle State, Source Reference behavior, provenance, relationship meaning, publication permission, export permission, migration permission, synchronization permission, indexing permission, backup permission, agent permission, or downstream-use permission.
+
+Implementation-specific links, indexes, caches, database records, plugin states, tags, views, filters, dashboards, search results, graph positions, embeddings, summaries, exports, publications, backups, synchronization states, or generated artifacts MUST NOT redefine governed meaning by themselves.
+
+A downstream-use boundary SHOULD identify what use is permitted, what use is denied, what use is limited, what actor may use the material, what system may use the material, what agent may use the material, what implementation may use the material, what destination may receive the material, what representation may be used, what redactions apply, what warnings apply, and what future review conditions apply.
+
+Downstream users, consuming systems, agents, workflows, or implementations MUST NOT treat cleared use in one scope as clearance for another scope unless the clearance decision explicitly permits that broader use.
+
+A downstream-use workflow SHOULD preserve boundary notices, warnings, manifests, metadata, provenance, validation context, privacy context, authority context, lifecycle context, relationship context, Source Reference context, and compatibility notes where those affect future interpretation or use.
+
+Agent, Implementation, and Downstream-Use Boundaries are successful when agents and implementations can help make governed knowledge usable without becoming hidden authorities, privacy governors, validators, publishers, exporters, migration authorities, synchronization authorities, indexing authorities, backup authorities, or downstream-use governors by accident.
+
+## 13. Workflow Logging, Auditability, and Traceability
+
+Workflow Logging, Auditability, and Traceability define how publication, export, migration, synchronization, indexing, backup, recovery, implementation exposure, agent exposure, and downstream-use actions are recorded, reviewed, preserved, and interpreted.
+
+Workflow logging exists to make downstream-use activity traceable.
+
+Workflow logging does not create clearance by itself.
+
+A workflow log MAY support review, audit, validation, maintenance, repair, recovery, compatibility review, governance review, publication review, export review, migration review, synchronization review, indexing review, backup review, implementation review, agent review, or downstream-use review.
+
+A workflow log MUST NOT become approval, authority, validation, Privacy Classification, Lifecycle State, publication permission, export permission, migration permission, synchronization permission, indexing permission, backup permission, implementation permission, agent permission, or downstream-use permission by itself.
+
+A downstream-use workflow SHOULD log material actions where the action affects:
+
+- knowledge meaning;
+- Object Identity;
+- metadata;
+- relationships;
+- Source References;
+- provenance;
+- Lifecycle State;
+- Authority Level;
+- Privacy Classification;
+- Validation State;
+- validation results;
+- approval scope;
+- maintenance context;
+- clearance scope;
+- redaction;
+- packaging;
+- publication;
+- export;
+- migration;
+- synchronization;
+- indexing;
+- backup;
+- recovery;
+- implementation exposure;
+- agent exposure;
+- downstream use;
+- compatibility;
+- governance;
+- auditability;
+- future interpretation.
+
+A downstream-use workflow log SHOULD identify or support identification of:
+
+- the governed entity involved;
+- the action performed;
+- the action type;
+- the action scope;
+- the requested downstream-use scope;
+- the Clearance Scope where applicable;
+- the Clearance Decision where applicable;
+- the actor where applicable;
+- the human reviewer where applicable;
+- the agent involved where applicable;
+- the implementation involved where applicable;
+- the workflow involved where applicable;
+- the storage environment involved where applicable;
+- the source environment where applicable;
+- the target environment where applicable;
+- the publication destination where applicable;
+- the export destination where applicable;
+- the migration target where applicable;
+- the synchronization target where applicable;
+- the index target where applicable;
+- the backup target where applicable;
+- the recovery source where applicable;
+- the recovery target where applicable;
+- the Privacy Classification reviewed;
+- the Authority Level reviewed;
+- the Lifecycle State reviewed;
+- the Validation State or validation results reviewed;
+- the Source References reviewed;
+- the provenance reviewed;
+- the relationships reviewed;
+- the redaction performed;
+- the package or representation created;
+- the limitations applied;
+- the warnings applied;
+- the exceptions identified;
+- the escalation path where applicable;
+- the date, version, run, commit, package, or other traceability marker where applicable.
+
+A workflow log SHOULD remain distinguishable from the governed entity it describes.
+
+A workflow log MUST NOT silently modify the governed entity unless a governed workflow explicitly permits that modification.
+
+A workflow log SHOULD preserve enough context for future humans, agents, workflows, validators, storage systems, publication processes, export processes, migration processes, synchronization processes, indexing systems, backup systems, implementations, and downstream users to determine what happened and why it mattered.
+
+Auditability requires that downstream-use decisions and actions remain reviewable after the original actor, agent, implementation, storage location, workflow environment, export package, migration target, synchronization target, index, backup, or publication channel changes.
+
+A downstream-use workflow SHOULD preserve auditability where publication, export, migration, synchronization, indexing, backup, recovery, implementation exposure, agent exposure, or downstream use affects governance, privacy, authority, validation, lifecycle state, source traceability, relationship meaning, compatibility, or future interpretation.
+
+Traceability requires that downstream-use activity remain connected to the relevant governed entity, Source References, provenance, relationships, metadata, clearance decision, workflow context, actor context, agent context, implementation context, and downstream-use scope where those affect interpretation.
+
+Traceability MUST NOT depend only on hidden implementation logs, temporary caches, user-interface state, plugin state, agent memory, workflow memory, search results, generated summaries, or undocumented operational practice where traceability affects governed meaning or future review.
+
+Workflow logs MAY contain restricted information.
+
+Workflow logs MUST preserve Privacy Classification and exposure boundaries.
+
+A workflow log SHOULD be redacted, restricted, summarized, separated, or protected where the log itself exposes restricted content, restricted metadata, restricted relationships, restricted Source References, restricted provenance, validation-sensitive information, authority-sensitive information, lifecycle-sensitive information, agent-sensitive information, implementation-sensitive information, export-sensitive information, migration-sensitive information, synchronization-sensitive information, indexing-sensitive information, backup-sensitive information, or downstream-use-sensitive information.
+
+A redacted workflow log SHOULD remain distinguishable from an unredacted workflow log.
+
+A missing workflow log does not automatically invalidate a governed entity.
+
+A missing workflow log MAY block, limit, defer, or escalate downstream use where auditability, privacy, authority, validation, lifecycle handling, source traceability, relationship meaning, compatibility, clearance, or governance depends on that log.
+
+Workflow Logging, Auditability, and Traceability are successful when future humans, agents, workflows, validators, storage systems, implementations, publication processes, export processes, migration processes, synchronization processes, indexing systems, backup systems, and downstream users can reconstruct material downstream-use decisions and actions without allowing logs, indexes, caches, implementation state, agent memory, or operational convenience to redefine governed meaning or permission.
+
+## 14. Non-Conformance, Exceptions, and Corrective Routing
+
+Non-Conformance, Exceptions, and Corrective Routing define how WF-0004 handles downstream-use workflow failures, boundary violations, missing information, incompatible actions, unauthorized exposure, incomplete clearance, and other conditions that prevent compliant publication, export, migration, synchronization, indexing, backup, recovery, implementation exposure, agent exposure, or downstream use.
+
+Non-conformance occurs when a downstream-use workflow, actor, agent, implementation, storage process, publication process, export process, migration process, synchronization process, indexing process, backup process, recovery process, or downstream user does not satisfy applicable WF-0004 requirements.
+
+Non-conformance MAY include:
+
+- missing clearance where clearance is required;
+- unclear Clearance Scope;
+- use outside the Clearance Scope;
+- publication without required review;
+- export without required review;
+- migration without required review;
+- synchronization into an incompatible target;
+- indexing beyond permitted privacy boundaries;
+- backup into an incompatible target;
+- recovery without required validation or review;
+- implementation exposure beyond permitted scope;
+- agent exposure beyond permitted scope;
+- downstream use beyond permitted scope;
+- missing Privacy Classification;
+- ignored Privacy Classification;
+- weakened privacy boundary;
+- missing Authority Level;
+- overstated authority;
+- missing Lifecycle State;
+- lifecycle state misrepresentation;
+- missing Validation State or validation results;
+- ignored validation error;
+- stale validation result;
+- missing Source References where required;
+- broken Source References where source traceability is required;
+- missing provenance where provenance is required;
+- broken provenance where provenance affects interpretation;
+- removed or distorted relationships;
+- missing package manifest where required;
+- missing redaction record where required;
+- missing workflow log where required;
+- implementation behavior treated as permission;
+- agent confidence treated as authority;
+- storage placement treated as clearance;
+- indexing visibility treated as approval;
+- backup existence treated as export permission;
+- publication treated as unrestricted reuse;
+- export treated as unrestricted downstream use;
+- migration treated as approved meaning.
+
+A downstream-use workflow SHOULD detect non-conformance before downstream-use action occurs.
+
+A downstream-use workflow MAY also detect non-conformance after publication, export, migration, synchronization, indexing, backup, recovery, implementation exposure, agent exposure, or downstream use has already occurred.
+
+When non-conformance is detected before action, the workflow SHOULD route the candidate to one or more of the following outcomes:
+
+- deny the requested use;
+- limit the requested use;
+- defer the requested use;
+- require repair;
+- require validation;
+- require privacy review;
+- require authority review;
+- require lifecycle review;
+- require source-reference review;
+- require provenance review;
+- require relationship review;
+- require redaction;
+- require packaging;
+- require manifest correction;
+- require logging correction;
+- require human review;
+- require agent-boundary review;
+- require implementation review;
+- require storage review;
+- require compatibility review;
+- require escalation;
+- require quarantine;
+- require archival;
+- require supersession;
+- require deprecation;
+- require a future governed specification.
+
+When non-conformance is detected after action, the workflow SHOULD evaluate:
+
+- what governed entity was affected;
+- what action occurred;
+- who or what performed the action where applicable;
+- what Clearance Scope applied, if any;
+- what scope was exceeded, if any;
+- what Privacy Classification was affected;
+- what Authority Level was affected;
+- what Lifecycle State was affected;
+- what Validation State or validation result was affected;
+- what Source References were affected;
+- what provenance was affected;
+- what relationships were affected;
+- what package, export, publication, migration, synchronization, index, backup, recovery, implementation, agent, or downstream environment was affected;
+- whether restricted material was exposed;
+- whether authority was overstated;
+- whether validation limits were hidden;
+- whether lifecycle status was misrepresented;
+- whether source traceability was broken;
+- whether relationship meaning was distorted;
+- whether downstream users or systems relied on the non-conforming action;
+- what corrective routing is required.
+
+Corrective routing MAY include:
+
+- restricting further use;
+- revoking or limiting clearance;
+- issuing a corrected package;
+- issuing a corrected publication;
+- issuing a corrected export;
+- issuing a corrected migration package;
+- correcting a synchronization target;
+- correcting or removing an index entry within governed scope;
+- correcting a backup target within governed scope;
+- validating recovered material;
+- repairing metadata;
+- repairing Source References;
+- repairing provenance;
+- repairing relationships;
+- repairing workflow logs;
+- repairing package manifests;
+- restoring a prior governed representation where appropriate;
+- quarantining affected material;
+- escalating to human review;
+- escalating to governance review;
+- recording the exception;
+- recording the corrective action;
+- requiring a future specification.
+
+An exception is a governed allowance for limited deviation from the normal downstream-use workflow.
+
+An exception MUST be explicit where the deviation affects privacy, authority, lifecycle state, validation, source traceability, provenance, relationships, compatibility, publication, export, migration, synchronization, indexing, backup, recovery, implementation exposure, agent exposure, downstream use, or governance.
+
+An exception SHOULD identify or support identification of:
+
+- the exception reason;
+- the governed entity affected;
+- the workflow requirement affected;
+- the downstream-use scope affected;
+- the actor approving or allowing the exception where applicable;
+- the Privacy Classification reviewed;
+- the Authority Level reviewed;
+- the Lifecycle State reviewed;
+- the Validation State or validation results reviewed;
+- the source, provenance, and relationship context reviewed;
+- the risk accepted;
+- the limitation applied;
+- the expiration or review point where applicable;
+- the corrective action required where applicable;
+- the workflow log or exception record.
+
+An exception MUST NOT become a general rule unless a governed standard, specification, ADR, RFC, or governance process explicitly changes the rule.
+
+Repeated exceptions SHOULD trigger review for possible repair, clarification, specification, training, implementation correction, workflow improvement, or governance action.
+
+Emergency, recovery, compatibility, migration, publication, export, synchronization, indexing, backup, implementation, agent, or downstream-use needs MAY justify limited exceptions only where the exception remains scoped, logged, reviewable, privacy-respecting, authority-aware, validation-aware, and compatible with the constitutional foundation.
+
+Non-Conformance, Exceptions, and Corrective Routing are successful when downstream-use failures are detected, contained, reviewed, corrected, preserved, and learned from without allowing informal practice, tool behavior, agent action, storage placement, operational urgency, or repeated exception to become architecture by accident.
+
+## 15. Workflow Conformance Requirements
+
+Workflow Conformance Requirements define the minimum behavior required for a publication, export, migration, synchronization, indexing, backup, recovery, implementation exposure, agent exposure, or downstream-use workflow to conform to WF-0004.
+
+A conforming WF-0004 workflow SHALL preserve the purpose, scope, boundaries, and downstream-use distinctions defined by this standard.
+
+A conforming WF-0004 workflow MUST preserve the distinction between:
+
+- approval and clearance;
+- validation and clearance;
+- Authority Level and clearance;
+- Lifecycle State and clearance;
+- Privacy Classification and clearance;
+- storage placement and clearance;
+- implementation visibility and clearance;
+- agent access and clearance;
+- workflow completion and clearance;
+- publication and unrestricted reuse;
+- export and unrestricted downstream use;
+- migration and approved meaning;
+- synchronization and publication;
+- indexing and authority;
+- backup and export permission;
+- recovery and normal use.
+
+A conforming WF-0004 workflow SHALL require explicit clearance where publication, export, migration, synchronization, indexing, backup, recovery, implementation exposure, agent exposure, or downstream use affects privacy, authority, lifecycle state, validation, source traceability, provenance, relationships, compatibility, governance, or future interpretation.
+
+A conforming WF-0004 workflow SHALL preserve Object Identity.
+
+A conforming WF-0004 workflow MUST NOT silently create, remove, merge, split, replace, redirect, or reinterpret Object Identity through publication, export, migration, synchronization, indexing, backup, recovery, implementation exposure, agent exposure, packaging, representation, formatting, or downstream use.
+
+A conforming WF-0004 workflow SHALL preserve required metadata where metadata affects interpretation, source traceability, provenance, relationships, lifecycle state, authority, privacy, validation, compatibility, governance, publication, export, migration, synchronization, indexing, backup, recovery, implementation exposure, agent exposure, or downstream use.
+
+A conforming WF-0004 workflow SHALL preserve Source References and provenance where source traceability, evidence context, attribution, origin history, transformation history, review history, validation history, maintenance history, import history, export history, migration history, publication history, synchronization history, indexing history, backup history, recovery history, implementation exposure, agent exposure, or downstream-use history affects interpretation or use.
+
+A conforming WF-0004 workflow SHALL preserve relationship meaning where relationships affect interpretation, authority, privacy, validation, lifecycle state, source traceability, provenance, compatibility, publication, export, migration, synchronization, indexing, backup, recovery, implementation exposure, agent exposure, or downstream use.
+
+A conforming WF-0004 workflow SHALL preserve Privacy Classification.
+
+A conforming WF-0004 workflow MUST NOT weaken Privacy Classification merely because an action is useful, convenient, requested, automated, technically possible, implementation-supported, agent-supported, indexed, synchronized, backed up, exported, migrated, published, or previously exposed.
+
+A conforming WF-0004 workflow SHALL preserve Authority Level and authority scope.
+
+A conforming WF-0004 workflow MUST NOT treat authority as publication permission, export permission, migration permission, synchronization permission, indexing permission, backup permission, implementation permission, agent permission, or downstream-use permission unless the Clearance Scope explicitly permits that use.
+
+A conforming WF-0004 workflow SHALL preserve Lifecycle State.
+
+A conforming WF-0004 workflow MUST NOT treat Lifecycle State as publication permission, export permission, migration permission, synchronization permission, indexing permission, backup permission, implementation permission, agent permission, or downstream-use permission unless a governed workflow or specification explicitly defines that effect within a controlled scope.
+
+A conforming WF-0004 workflow SHALL preserve Validation boundaries.
+
+A conforming WF-0004 workflow MUST NOT treat validation results as approval, authority, privacy permission, lifecycle transition, publication permission, export permission, migration permission, synchronization permission, indexing permission, backup permission, implementation permission, agent permission, or downstream-use permission unless a governed workflow or specification explicitly defines that behavior within a controlled scope.
+
+A conforming WF-0004 workflow SHALL preserve agent boundaries.
+
+A conforming WF-0004 workflow MUST NOT allow agent activity, agent confidence, agent memory, agent output, agent usefulness, or agent access to become approval, authority, privacy clearance, validation, publication permission, export permission, migration permission, synchronization permission, indexing permission, backup permission, implementation permission, or downstream-use permission by itself.
+
+A conforming WF-0004 workflow SHALL preserve implementation independence.
+
+A conforming WF-0004 workflow MUST NOT allow implementation behavior, implementation visibility, plugin state, user-interface state, search results, graph position, embeddings, caches, synchronization status, backup status, export status, publication status, migration status, or implementation-specific metadata to redefine governed meaning by itself.
+
+A conforming WF-0004 workflow SHOULD preserve workflow logs where logging is required for auditability, privacy, authority, lifecycle state, validation, source traceability, provenance, relationships, compatibility, governance, publication, export, migration, synchronization, indexing, backup, recovery, implementation exposure, agent exposure, or downstream use.
+
+A conforming WF-0004 workflow SHOULD detect, route, log, repair, restrict, quarantine, escalate, or otherwise govern non-conformance where downstream-use behavior violates applicable requirements.
+
+A conforming WF-0004 workflow MAY be implemented through different tools, storage systems, workflow engines, agents, scripts, databases, repositories, vaults, publication systems, export systems, migration systems, synchronization systems, indexing systems, backup systems, recovery systems, or future implementations.
+
+Implementation variation is compliant only when governed meaning, boundaries, traceability, privacy, authority, lifecycle handling, validation handling, source traceability, relationship meaning, compatibility, and downstream-use scope remain preserved.
+
+Workflow Conformance Requirements are successful when a future implementation, agent framework, storage system, publication system, export system, migration system, synchronization system, indexing system, backup system, recovery system, or downstream environment can realize WF-0004 without turning operational behavior into standard meaning or permission.
+
+## 16. Success Criteria
+
+Success Criteria define the conditions under which WF-0004 has fulfilled its standard-level purpose.
+
+WF-0004 is successful when publication, export, migration, synchronization, indexing, backup, recovery, implementation exposure, agent exposure, and downstream use can occur without weakening governed knowledge meaning, privacy, authority, lifecycle handling, validation boundaries, source traceability, provenance, relationship meaning, storage boundaries, agent boundaries, workflow boundaries, implementation independence, compatibility, or auditability.
+
+A successful WF-0004 workflow allows future humans, agents, workflows, validators, storage systems, publication processes, export processes, migration processes, synchronization processes, indexing systems, backup systems, recovery systems, implementations, and downstream users to determine:
+
+- what governed entity was evaluated;
+- what downstream-use action was requested;
+- what downstream-use scope applied;
+- what Clearance Decision applied;
+- what conditions or limits applied;
+- what Privacy Classification applied;
+- what Authority Level applied;
+- what Lifecycle State applied;
+- what Validation State or validation results applied;
+- what Source References applied;
+- what provenance applied;
+- what relationships affected use;
+- what metadata was preserved, redacted, transformed, suppressed, or excluded;
+- what redaction occurred where applicable;
+- what package, representation, export, publication, migration, synchronization, index, backup, recovery, implementation exposure, agent exposure, or downstream-use output was created;
+- what actor, agent, workflow, implementation, storage process, or system participated where applicable;
+- what logs, manifests, warnings, limitations, or audit records exist where applicable;
+- what future review, expiration, revocation, correction, maintenance, recovery, or escalation condition applies where applicable.
+
+WF-0004 is successful when downstream-use clearance remains explicit, scoped, traceable, reviewable where required, privacy-respecting, authority-aware, lifecycle-aware, validation-aware, provenance-preserving, relationship-preserving, implementation-independent, and compatible with future review.
+
+WF-0004 is successful when approval does not silently become publication permission.
+
+WF-0004 is successful when approval does not silently become export permission.
+
+WF-0004 is successful when approval does not silently become migration permission.
+
+WF-0004 is successful when approval does not silently become synchronization permission.
+
+WF-0004 is successful when approval does not silently become indexing permission.
+
+WF-0004 is successful when approval does not silently become backup permission.
+
+WF-0004 is successful when approval does not silently become implementation permission.
+
+WF-0004 is successful when approval does not silently become agent permission.
+
+WF-0004 is successful when approval does not silently become unrestricted downstream-use permission.
+
+WF-0004 is successful when validation results support decisions without becoming approval, authority, privacy clearance, lifecycle transition, publication permission, export permission, migration permission, synchronization permission, indexing permission, backup permission, implementation permission, agent permission, or downstream-use permission by themselves.
+
+WF-0004 is successful when Authority Level supports interpretation without becoming unrestricted use permission by itself.
+
+WF-0004 is successful when Lifecycle State supports handling without becoming unrestricted use permission by itself.
+
+WF-0004 is successful when Privacy Classification governs exposure and is not weakened by usefulness, automation, storage placement, implementation visibility, searchability, publication demand, export demand, migration demand, synchronization demand, indexing demand, backup demand, recovery demand, agent usefulness, or downstream-use demand.
+
+WF-0004 is successful when Source References, provenance, and relationships remain preserved, protected, redacted, suppressed, transformed, or limited only through explicit governed handling.
+
+WF-0004 is successful when packaging, representation, format handling, publication, export, migration, synchronization, indexing, backup, recovery, implementation exposure, agent exposure, and downstream use do not silently change governed meaning.
+
+WF-0004 is successful when agents can assist downstream-use workflows without becoming hidden authorities, hidden publishers, hidden exporters, hidden migration authorities, hidden synchronization authorities, hidden indexing authorities, hidden backup authorities, hidden recovery authorities, hidden privacy governors, hidden validators, hidden approvers, or hidden downstream-use governors.
+
+WF-0004 is successful when implementations can support downstream-use workflows without becoming the standard, redefining governed meaning, weakening privacy, overstating authority, hiding validation limits, breaking source traceability, distorting relationship meaning, or converting operational visibility into governed permission.
+
+WF-0004 is successful when non-conformance, exceptions, and corrective routing are detected, reviewed, logged, repaired, limited, quarantined, escalated, or otherwise governed before informal practice becomes architecture by accident.
+
+WF-0004 is successful when future specifications, templates, operational guides, implementation profiles, publication specifications, export specifications, migration specifications, synchronization specifications, indexing specifications, backup specifications, recovery specifications, access-control mappings, agent task profiles, validators, and reference implementations can build on WF-0004 without redefining its standard-level boundaries.
+
+## 17. Closing Rule
+
+The Closing Rule defines the final interpretive constraint for WF-0004.
+
+Publication, export, migration, synchronization, indexing, backup, recovery, implementation exposure, agent exposure, and downstream use SHALL remain governed workflow actions.
+
+They SHALL NOT become implicit rights, permissions, approvals, validations, authority assignments, privacy reductions, lifecycle transitions, storage meanings, agent powers, implementation meanings, or unrestricted reuse merely because they are useful, repeated, automated, technically possible, visible, searchable, synchronized, backed up, indexed, exported, migrated, published, recovered, requested, or previously performed.
+
+A governed entity MAY be usable in one downstream-use scope and unusable in another.
+
+A governed entity MAY be publishable in one publication scope and non-publishable in another.
+
+A governed entity MAY be exportable in one export scope and non-exportable in another.
+
+A governed entity MAY be migratable in one migration scope and non-migratable in another.
+
+A governed entity MAY be synchronizable in one synchronization scope and non-synchronizable in another.
+
+A governed entity MAY be indexable in one indexing scope and non-indexable in another.
+
+A governed entity MAY be backed up in one backup scope and not backed up in another.
+
+A governed entity MAY be recoverable in one recovery scope and not restored to normal use in another.
+
+A governed entity MAY be visible to one implementation and restricted from another.
+
+A governed entity MAY be readable by one agent and restricted from another.
+
+A governed entity MAY be cleared for one downstream user, system, workflow, package, publication, export, migration, synchronization, index, backup, recovery, implementation, or agent while remaining restricted for all other uses.
+
+The controlling question is not whether a downstream-use action can be performed.
+
+The controlling question is whether the action is permitted within a governed scope while preserving the applicable standards.
+
+WF-0004 SHALL be interpreted to preserve:
+
+- knowledge meaning;
+- Object Identity;
+- required metadata;
+- Source References;
+- provenance;
+- relationship meaning;
+- Lifecycle State;
+- Authority Level;
+- Privacy Classification;
+- Validation boundaries;
+- review history;
+- approval scope;
+- maintenance history;
+- clearance scope;
+- redaction context;
+- package context;
+- workflow logs;
+- auditability;
+- compatibility;
+- storage boundaries;
+- agent boundaries;
+- implementation independence;
+- governance traceability;
+- long-term portability.
+
+Where a downstream-use action conflicts with privacy protection, source traceability, provenance preservation, relationship meaning, validation limits, authority scope, lifecycle handling, compatibility, human reviewability, agent boundaries, implementation independence, or governance traceability, the action SHOULD be denied, limited, deferred, repaired, redacted, repackaged, validated, reviewed, quarantined, escalated, or governed through a future specification.
+
+WF-0004 closes with the rule that downstream use is never self-authorizing.
+
+Every publication, export, migration, synchronization, indexing, backup, recovery, implementation exposure, agent exposure, and downstream-use action remains subordinate to explicit governed meaning, explicit governed scope, and the constitutional foundation of The Brain Standard.
+
+## 18. Milestone Completion and Handoff Boundary
+
+Milestone Completion and Handoff Boundary define how WF-0004 transitions from section creation into final review, correction, approval consideration, and handoff.
+
+WF-0004 is section-complete when all required standard-level sections have been drafted, ordered, inspected, and reviewed for flow.
+
+Section-complete status does not equal final approval.
+
+Section-complete status does not remove the need for syntax correction, final review, redundancy review, grammar review, cross-standard consistency review, or governance review.
+
+Before WF-0004 may be treated as ready for final approval consideration, the file SHOULD be reviewed for:
+
+- Markdown heading correctness;
+- heading sequence;
+- duplicate headings;
+- missing sections;
+- extra sections;
+- metadata correctness;
+- normative language consistency;
+- terminology consistency;
+- spelling and grammar;
+- section flow;
+- redundancy against prior standards;
+- conflict with higher-authority documents;
+- conflict with KS standards;
+- conflict with SS standards;
+- conflict with AG standards;
+- conflict with prior WF standards;
+- implementation-specific leakage;
+- accidental schema definition;
+- accidental folder-path definition;
+- accidental agent-prompt definition;
+- accidental tool-specific behavior;
+- accidental approval behavior;
+- accidental privacy weakening;
+- accidental validation-to-clearance conversion;
+- accidental authority expansion;
+- accidental lifecycle-state expansion;
+- accidental downstream-use permission expansion.
+
+WF-0004 SHOULD NOT proceed to handoff summary until known blocking syntax issues are corrected.
+
+WF-0004 SHOULD NOT proceed to handoff summary until the document has been inspected as a complete file.
+
+WF-0004 SHOULD NOT proceed to handoff summary until the reviewer can identify the next milestone or file without creating architectural drift.
+
+A WF-0004 handoff summary SHOULD preserve:
+
+- what WF-0004 defines;
+- what WF-0004 does not define;
+- what sections were completed;
+- what corrections were required;
+- what unresolved issues remain;
+- what standards WF-0004 depends on;
+- what downstream specifications may be needed later;
+- what milestone WF-0004 completes;
+- what milestone should follow;
+- whether the next step is final review, approval consideration, repository update, or the next governed document.
+
+The completion of WF-0004 SHOULD transition Phase 4 from downstream-use workflow definition toward the next required workflow, agent, implementation, specification, or deployment-readiness milestone defined by the project roadmap.
+
+Milestone Completion and Handoff Boundary are successful when WF-0004 can be handed to a future human, agent, workflow, validator, implementation builder, or governance reviewer without losing context, repeating prior decisions, skipping required corrections, or confusing section completion with approval.
