@@ -3,7 +3,7 @@
 Document ID: WF-0004
 Title: Publication, Export, and Downstream Use Workflow Standard
 Version: 0.1.0
-Status: Aprroved
+Status: Approved
 Created: 2026-06-28
 Last Updated: 2026-06-28
 Authority: Standard
