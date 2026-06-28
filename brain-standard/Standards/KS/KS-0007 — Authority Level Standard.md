@@ -10,6 +10,8 @@ Authority: Standard
 Phase: Phase 1 — Universal Knowledge Standard
 Milestone: 1.7 — Authority Level Standard
 Depends On: TB-0000 — Vision and Purpose; TB-0001 — Architecture Principles; TB-0002 — Layered Architecture; TB-0003 — Governance Model; KS-0001 — Knowledge Object Model; KS-0002 — Object Identity Standard; KS-0003 — Metadata Standard; KS-0004 — Relationship Standard; KS-0005 — Source Reference and Provenance Standard; KS-0006 — Lifecycle State Standard
+Supersedes: None
+Superseded By: None
 Related: None
 
 ## Normative Language
