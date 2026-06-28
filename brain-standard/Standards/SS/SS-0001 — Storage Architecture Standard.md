@@ -3,7 +3,7 @@
 Document ID: SS-0001
 Title: Storage Architecture Standard
 Version: 0.1.0
-Status: Draft
+Status: Approved
 Created: 2026-06-28
 Last Updated: 2026-06-28
 Authority: Standard
@@ -1403,3 +1403,875 @@ SS-0001 does not require a specific backup tool, archive format, restoration too
 Those details belong to future backup specifications, archive specifications, restoration specifications, implementation profiles, security specifications, validation specifications, or operational guides.
 
 Archive, Backup, and Restoration Storage is successful when governed entities can be preserved and restored without identity confusion, source confusion, lifecycle confusion, authority confusion, privacy exposure, validation overstatement, provenance loss, relationship loss, compatibility loss, implementation lock-in, or loss of historical traceability.
+
+## 13. Synchronization and Indexing Storage
+
+Synchronization and Indexing Storage defines how governed entities may be copied, mirrored, replicated, cached, searched, ranked, embedded, summarized, previewed, vectorized, or made discoverable without allowing synchronization or indexing behavior to redefine governed meaning.
+
+Synchronization exists to support access, continuity, collaboration, redundancy, device movement, repository mirroring, backup, restoration, implementation support, and practical daily use.
+
+Indexing exists to support discovery, retrieval, search, navigation, validation, automation, review, relationship discovery, source lookup, and implementation performance.
+
+Synchronization and indexing MAY support storage behavior.
+
+Synchronization and indexing MUST NOT define knowledge meaning by themselves.
+
+Synchronization storage MAY include:
+
+- synchronized files;
+- replicated repositories;
+- mirrored vaults;
+- device copies;
+- cloud copies;
+- local copies;
+- collaboration copies;
+- synchronization metadata;
+- synchronization logs;
+- conflict records;
+- restore points;
+- replicated databases;
+- implementation-specific synchronization artifacts;
+- future synchronization representations.
+
+Indexing storage MAY include:
+
+- search indexes;
+- vector indexes;
+- embeddings;
+- previews;
+- summaries;
+- keyword indexes;
+- tags;
+- classification indexes;
+- relationship indexes;
+- source-reference indexes;
+- validation indexes;
+- cache files;
+- retrieval-supporting records;
+- implementation-specific index artifacts;
+- future indexing representations.
+
+A synchronized copy MUST NOT be treated as a new Knowledge Object merely because it exists in a different device, vault, repository, cloud service, local folder, backup location, implementation workspace, or synchronization target.
+
+A synchronized copy SHOULD preserve enough context to determine:
+
+- what governed entity was synchronized;
+- what Object Identity applies where applicable;
+- what storage representation was synchronized;
+- what synchronization scope applies;
+- what source environment was used where applicable;
+- what target environment was used where applicable;
+- whether metadata was preserved;
+- whether relationships were preserved;
+- whether Source References were preserved;
+- whether provenance was preserved;
+- whether Lifecycle State was preserved;
+- whether Authority Level was preserved;
+- whether Privacy Classification was preserved;
+- whether Validation State or validation expectations were preserved;
+- whether compatibility expectations were preserved;
+- whether conflicts, omissions, failures, or transformations occurred.
+
+Synchronization MUST preserve privacy boundaries.
+
+A restricted entity MUST NOT become less restricted merely because it is synchronized to another device, repository, service, vault, backup location, implementation workspace, collaboration environment, index, cache, export package, or migration package.
+
+Synchronization convenience MUST NOT override Privacy Classification.
+
+Synchronization MUST NOT silently create publication permission, export permission, indexing permission, backup permission, agent-use permission, workflow-use permission, implementation-use permission, or downstream-use permission.
+
+Synchronization conflicts SHOULD be reviewable where conflicts affect Object Identity, metadata, relationships, Source References, provenance, Lifecycle State, Authority Level, Privacy Classification, Validation, compatibility, publication, export, migration, workflow behavior, agent behavior, implementation behavior, or downstream use.
+
+A synchronization conflict MUST NOT silently replace, merge, split, redirect, delete, expose, approve, reject, deprecate, supersede, archive, validate, publish, export, index, or authorize downstream use of a governed entity unless a governed process, workflow, specification, or human review permits that behavior.
+
+Indexing MUST preserve governed boundaries.
+
+An index entry MUST NOT be treated as the governed entity itself.
+
+An index result MUST NOT be treated as authority by itself.
+
+A search ranking MUST NOT define Authority Level.
+
+A graph position MUST NOT define relationship meaning.
+
+A tag generated for indexing MUST NOT define standard metadata unless a governed standard or specification defines that role.
+
+An embedding MUST NOT define Knowledge Object meaning.
+
+A summary generated for indexing MUST NOT replace the Knowledge Record or Source Material unless a governed process explicitly creates a new governed representation.
+
+Indexing MUST preserve privacy boundaries.
+
+A restricted entity MUST NOT become discoverable, previewable, searchable, vectorized, summarized, embedded, cached, or exposed beyond its Privacy Classification merely because indexing improves retrieval, automation, validation, agent performance, workflow performance, or implementation usability.
+
+Indexing SHOULD preserve enough context for future humans, agents, workflows, validators, storage systems, synchronization systems, migration processes, import processes, export processes, and implementations to determine:
+
+- what indexed entity is represented;
+- whether the index is current, stale, partial, restricted, corrupted, or implementation-specific;
+- whether the index includes Source Material, Knowledge Records, governed documents, metadata, relationships, Source References, provenance, validation results, agent outputs, workflow outputs, or implementation artifacts;
+- whether the index respects Privacy Classification;
+- whether the index respects Lifecycle State;
+- whether the index respects Authority Level;
+- whether the index respects validation scope;
+- whether the index may be used for downstream processing;
+- whether reindexing or repair is required.
+
+Synchronization and indexing MAY use implementation-specific tools.
+
+Implementation-specific synchronization tools, search engines, vector stores, graph databases, embedding systems, cache systems, cloud services, local file systems, repository systems, or plugin systems MUST NOT define standard meaning by themselves.
+
+The governed meaning of synchronized or indexed entities MUST remain defined by the applicable standards and specifications rather than by the synchronization or indexing tool.
+
+Synchronization and Indexing Storage SHOULD support validation.
+
+A validator SHOULD be able to determine whether synchronization or indexing preserved identity, metadata, relationships, Source References, provenance, Lifecycle State, Authority Level, Privacy Classification, Validation State, compatibility, source distinction, implementation independence, and privacy boundaries.
+
+Synchronization and Indexing Storage is successful when synchronized and indexed representations improve access, discovery, continuity, review, validation, automation, and practical use without creating identity confusion, source confusion, lifecycle confusion, authority confusion, privacy exposure, validation overstatement, provenance loss, relationship loss, compatibility loss, or implementation lock-in.
+
+## 14. Import, Export, and Migration Storage
+
+Import, Export, and Migration Storage defines how governed entities may be brought into, produced from, moved between, transformed across, or preserved through compliant storage environments.
+
+Import exists to bring Knowledge Objects, Knowledge Records, Source Material, metadata, identifiers, relationships, Source References, provenance, governed documents, validation results, workflow outputs, agent outputs, implementation files, or external content into a compliant environment.
+
+Export exists to produce governed entities from a compliant environment for use elsewhere.
+
+Migration exists to move governed entities between storage systems, implementations, representations, schemas, vaults, repositories, databases, file formats, workflow environments, agent environments, implementation environments, or standard versions.
+
+Import, export, and migration MAY transform storage representations.
+
+Import, export, and migration MUST NOT silently redefine governed meaning.
+
+Import Storage MAY include:
+
+- import staging areas;
+- imported Source Material;
+- imported Knowledge Records;
+- imported governed documents;
+- imported metadata;
+- imported relationships;
+- imported Source References;
+- imported provenance records;
+- imported validation results;
+- import logs;
+- import mappings;
+- import review packages;
+- import error reports;
+- import repair notes;
+- external source packages;
+- implementation-specific import artifacts.
+
+Export Storage MAY include:
+
+- export packages;
+- exported Knowledge Records;
+- exported Source Material;
+- exported governed documents;
+- exported metadata;
+- exported relationships;
+- exported Source References;
+- exported provenance records;
+- exported validation results;
+- export manifests;
+- export logs;
+- export review packages;
+- export redaction records;
+- export compatibility reports;
+- implementation-specific export artifacts.
+
+Migration Storage MAY include:
+
+- migration staging areas;
+- migration packages;
+- migration mappings;
+- transformed records;
+- identifier mapping records;
+- relationship mapping records;
+- source-reference mapping records;
+- metadata mapping records;
+- validation reports;
+- compatibility reports;
+- migration logs;
+- migration review records;
+- migration repair records;
+- rollback records;
+- implementation-specific migration artifacts.
+
+Import MUST preserve or record enough context to determine:
+
+- what was imported;
+- where the imported material came from where known;
+- what import process was used where applicable;
+- what Object Identity applies or remains unresolved where applicable;
+- what Source Material was imported where applicable;
+- what Knowledge Records were imported where applicable;
+- what metadata was imported or created;
+- what relationships were imported or created;
+- what Source References were imported or created;
+- what provenance was imported or created;
+- what Lifecycle State applies;
+- what Authority Level applies;
+- what Privacy Classification applies;
+- what Validation State or validation expectations apply;
+- what compatibility concerns remain;
+- what review or repair remains required.
+
+Export MUST preserve or record enough context to determine:
+
+- what was exported;
+- what export scope applies;
+- what export destination or intended use applies where known;
+- whether Object Identity was preserved;
+- whether metadata was preserved;
+- whether relationships were preserved;
+- whether Source References were preserved;
+- whether provenance was preserved;
+- whether Lifecycle State was preserved;
+- whether Authority Level was preserved;
+- whether Privacy Classification was preserved;
+- whether Validation State or validation history was preserved;
+- whether redaction, filtering, transformation, compression, packaging, or format conversion occurred;
+- whether privacy review, authority review, validation review, or compatibility review was required;
+- whether downstream-use limits apply.
+
+Migration MUST preserve or record enough context to determine:
+
+- what was migrated;
+- what source storage environment was used;
+- what target storage environment was used;
+- what representation changed;
+- what mapping rules were used where applicable;
+- whether Object Identity was preserved;
+- whether metadata was preserved;
+- whether relationships were preserved;
+- whether Source References were preserved;
+- whether provenance was preserved;
+- whether Lifecycle State was preserved;
+- whether Authority Level was preserved;
+- whether Privacy Classification was preserved;
+- whether Validation State or validation history was preserved;
+- whether compatibility was preserved;
+- whether repair remains required;
+- whether rollback is possible where applicable.
+
+Import, export, and migration MUST preserve privacy boundaries.
+
+A restricted entity MUST NOT become less restricted merely because it is imported, exported, migrated, staged, packaged, transformed, compressed, synchronized, backed up, indexed, cached, previewed, summarized, or processed by an implementation, workflow, or agent.
+
+Export convenience MUST NOT override Privacy Classification.
+
+Migration convenience MUST NOT override Privacy Classification.
+
+Import convenience MUST NOT override Privacy Classification.
+
+Import, export, and migration MUST preserve Object Identity where identity preservation is required by the applicable standards.
+
+A Knowledge Object MUST NOT receive a new Object Identity merely because it is imported, exported, migrated, converted, packaged, unpackaged, moved between repositories, moved between vaults, moved between databases, restored into another environment, or represented in another format.
+
+An identity change MAY occur only through a governed identity process where the object itself becomes meaningfully different or where a governed standard, specification, workflow, or human review permits the change.
+
+Import, export, and migration SHOULD preserve Source Material and Knowledge Record distinction.
+
+A migrated Source Material file MUST remain distinguishable from a Knowledge Record.
+
+An exported Knowledge Record MUST remain distinguishable from Source Material.
+
+An imported source artifact MUST NOT become governed knowledge merely because it was imported into a compliant environment.
+
+An imported Knowledge Record MUST NOT be treated as validated, approved, authoritative, public, exportable, synchronizable, indexable, or safe for downstream use merely because import completed successfully.
+
+Import, export, and migration SHOULD support validation.
+
+A validator SHOULD be able to determine whether import, export, or migration preserved identity, metadata, relationships, Source References, provenance, Lifecycle State, Authority Level, Privacy Classification, Validation State, compatibility, source distinction, implementation independence, and privacy boundaries.
+
+Import success MUST NOT be confused with validation success.
+
+Export success MUST NOT be confused with publication permission.
+
+Migration success MUST NOT be confused with full conformance.
+
+A migration package MAY be technically complete while still requiring review, repair, privacy review, compatibility review, validation review, or human approval.
+
+Import, Export, and Migration Storage MAY rely on implementation-specific tools.
+
+Implementation-specific importers, exporters, migration scripts, repository tools, database tools, archive tools, synchronization tools, backup tools, validators, or conversion systems MUST NOT define standard meaning by themselves.
+
+The governed meaning of imported, exported, or migrated entities MUST remain defined by the applicable standards and specifications rather than by the tool.
+
+Import, Export, and Migration Storage is successful when governed entities can move into, out of, or between compliant environments without identity confusion, source confusion, metadata loss, relationship loss, Source Reference loss, provenance loss, lifecycle confusion, authority confusion, privacy exposure, validation overstatement, compatibility loss, implementation lock-in, or loss of historical traceability.
+
+## 15. Storage Validation and Compatibility
+
+Storage Validation and Compatibility defines how storage architecture should be checked, reviewed, preserved, repaired, migrated, and evaluated for continued compatibility with The Brain Standard.
+
+Storage Validation is the process of checking whether storage representations, storage environments, storage categories, storage boundaries, source-material storage, Knowledge Record storage, governed document storage, draft storage, review storage, approval storage, archive storage, backup storage, restoration storage, synchronization storage, indexing storage, import storage, export storage, migration storage, and implementation-specific storage behavior satisfy applicable storage expectations.
+
+Storage Compatibility is whether stored entities remain meaningful, portable, reviewable, privacy-respecting, provenance-preserving, source-reference-compatible, relationship-compatible, lifecycle-compatible, authority-compatible, validation-compatible, importable, exportable, migratable, restorable, synchronizable, indexable where permitted, and implementation-independent across time and tool replacement.
+
+Storage Validation supports storage reliability.
+
+Storage Validation does not replace Validation under the broader Validation Standard.
+
+Storage Compatibility supports long-term preservation.
+
+Storage Compatibility does not replace Object Identity, metadata, relationships, Source References, provenance, Lifecycle State, Authority Level, Privacy Classification, or Validation.
+
+A storage environment SHOULD support validation of:
+
+- storage representation role;
+- storage category;
+- storage boundary clarity;
+- Object Identity preservation;
+- metadata preservation;
+- relationship preservation;
+- Source Reference preservation;
+- provenance preservation;
+- Lifecycle State preservation;
+- Authority Level preservation;
+- Privacy Classification preservation;
+- Validation State preservation;
+- source-material distinction;
+- Knowledge Record distinction;
+- governed document distinction;
+- implementation file distinction;
+- draft, review, and approval distinction;
+- archive, backup, and restoration behavior;
+- synchronization behavior;
+- indexing behavior;
+- import behavior;
+- export behavior;
+- migration behavior;
+- compatibility expectations;
+- implementation-independence expectations.
+
+A storage validation result SHOULD identify the validation scope.
+
+Validation scope MAY include:
+
+- a single file;
+- a single Knowledge Record;
+- a single Source Material item;
+- a single governed document;
+- a storage category;
+- a storage area;
+- a repository;
+- a vault;
+- a database;
+- an archive;
+- a backup;
+- an export package;
+- an import package;
+- a migration package;
+- a synchronization target;
+- an index;
+- a cache;
+- an implementation workspace;
+- a full storage environment;
+- another governed storage scope.
+
+A storage validation result SHOULD distinguish between errors, warnings, incomplete checks, unavailable checks, implementation-specific checks, and full conformance claims.
+
+A storage validation result MUST NOT imply broader conformance than its validation scope supports.
+
+A storage validation result MUST NOT be treated as approval unless a governed workflow or specification explicitly defines that behavior.
+
+A storage validation result MUST NOT override Privacy Classification.
+
+A storage validation result MUST NOT override Authority Level.
+
+A storage validation result MUST NOT override Lifecycle State.
+
+A storage validation result MUST NOT create, remove, merge, split, replace, redirect, or reinterpret Object Identity by itself.
+
+Storage Compatibility SHOULD be reviewed when storage behavior changes.
+
+Storage behavior changes MAY include:
+
+- moving a vault;
+- reorganizing folders;
+- renaming files;
+- changing repository structure;
+- changing archive structure;
+- changing backup behavior;
+- changing synchronization tools;
+- changing indexing tools;
+- changing database representations;
+- changing implementation workspaces;
+- changing export packaging;
+- changing import behavior;
+- changing migration mappings;
+- changing validation rules;
+- changing storage specifications;
+- changing implementation profiles.
+
+A storage change MUST preserve governed meaning where the affected entities require preservation of identity, metadata, relationships, Source References, provenance, Lifecycle State, Authority Level, Privacy Classification, Validation, compatibility, import, export, migration, backup, synchronization, indexing, restoration, or downstream-use expectations.
+
+Storage Compatibility SHOULD support repair.
+
+Storage repair MAY address:
+
+- missing metadata;
+- broken Object Identity references;
+- broken relationships;
+- broken Source References;
+- missing provenance;
+- unclear lifecycle state;
+- unclear authority scope;
+- privacy exposure;
+- validation errors;
+- compatibility warnings;
+- source-material confusion;
+- Knowledge Record confusion;
+- governed document confusion;
+- implementation-file confusion;
+- import issues;
+- export issues;
+- migration issues;
+- backup issues;
+- restoration issues;
+- synchronization issues;
+- indexing issues;
+- cache issues;
+- archive issues.
+
+Storage repair MUST NOT silently rewrite governed meaning.
+
+Storage repair SHOULD preserve provenance where repair affects Object Identity, metadata, relationships, Source References, provenance, Lifecycle State, Authority Level, Privacy Classification, Validation, compatibility, publication, export, migration, workflow behavior, agent behavior, implementation behavior, or downstream use.
+
+Storage Compatibility SHOULD support implementation replacement.
+
+A compliant storage architecture SHOULD allow a future implementation to read, preserve, validate, migrate, export, import, back up, restore, synchronize, index where permitted, and present governed entities without requiring the original implementation to remain available.
+
+Storage Compatibility SHOULD support standard evolution.
+
+When a future standard, specification, implementation profile, validation rule, workflow standard, agent standard, migration rule, backup rule, synchronization rule, indexing rule, or operational guide changes storage expectations, compatibility review SHOULD determine whether existing stored entities remain valid, require migration, require repair, require reclassification, require privacy review, require authority review, require validation review, or require historical preservation.
+
+Storage Validation and Compatibility MUST preserve privacy boundaries.
+
+A storage validator, compatibility checker, repair process, migration process, indexing process, synchronization process, backup process, export process, import process, workflow, agent, implementation, or human reviewer MUST NOT expose restricted knowledge beyond its Privacy Classification merely to make validation, repair, migration, indexing, synchronization, backup, export, import, or review easier.
+
+Storage Validation and Compatibility MAY rely on implementation-specific tools.
+
+Implementation-specific validators, scripts, plugins, database checks, search tools, repository tools, schema tools, synchronization tools, backup tools, migration tools, or indexers MAY support validation and compatibility review.
+
+Those tools MUST NOT define standard meaning by themselves.
+
+A tool result becomes standard-relevant only when its meaning is interpreted according to the applicable governed standard, specification, workflow, validation scope, or human review process.
+
+Storage Validation and Compatibility is successful when storage environments can be checked, repaired, evolved, migrated, backed up, restored, synchronized, indexed where permitted, imported, exported, and replaced without loss of governed meaning, privacy boundaries, provenance, relationships, source distinction, identity stability, validation scope, authority scope, lifecycle clarity, compatibility, or implementation independence.
+
+## 16. Storage Governance and Evolution
+
+Storage Governance and Evolution defines how storage architecture, storage expectations, storage specifications, storage profiles, storage procedures, storage validation, storage migration, and storage implementation patterns may change over time without weakening The Brain Standard.
+
+Storage architecture MAY evolve.
+
+Storage evolution MAY include changes to:
+
+- storage categories;
+- storage boundaries;
+- storage representations;
+- vault organization;
+- repository organization;
+- source-material storage behavior;
+- Knowledge Record storage behavior;
+- governed document storage behavior;
+- draft, review, and approval storage behavior;
+- archive behavior;
+- backup behavior;
+- restoration behavior;
+- synchronization behavior;
+- indexing behavior;
+- import behavior;
+- export behavior;
+- migration behavior;
+- validation behavior;
+- compatibility expectations;
+- implementation profiles;
+- operational guides;
+- future storage specifications.
+
+Storage evolution MUST remain governed.
+
+Storage conventions, folder structures, repository layouts, synchronization tools, backup tools, indexing tools, archive formats, import tools, export tools, migration scripts, implementation defaults, agent behavior, workflow convenience, or repeated practice MUST NOT become part of The Brain Standard unless documented, reviewed, and approved at the appropriate authority level.
+
+A storage change MUST preserve the constitutional foundation.
+
+A storage change MUST preserve the Layer 1 Knowledge Standards.
+
+A storage change MUST preserve Object Identity, metadata, relationships, Source References, provenance, Lifecycle State, Authority Level, Privacy Classification, Validation, compatibility, source distinction, implementation independence, and privacy boundaries where those affect governed meaning.
+
+Storage governance SHOULD distinguish between:
+
+- standard-level storage rules;
+- lower-level storage specifications;
+- implementation profiles;
+- reference implementations;
+- operational guides;
+- templates;
+- validators;
+- migration tools;
+- backup procedures;
+- synchronization procedures;
+- indexing procedures;
+- local practice;
+- temporary workarounds.
+
+A standard-level storage rule defines required or recommended behavior for storage architecture.
+
+A storage specification may define exact structures, fields, formats, folder conventions, file naming rules, validation rules, import rules, export rules, migration mappings, backup rules, synchronization rules, indexing rules, or archive rules within a narrower scope.
+
+An implementation profile may define how a specific tool, vault, repository, database, file system, cloud service, local system, agent environment, workflow environment, or future implementation realizes the storage standard.
+
+A reference implementation may demonstrate one compliant way to realize storage behavior.
+
+An operational guide may explain how a human, agent, workflow, or implementation should perform practical storage tasks.
+
+None of those lower-authority documents may override SS-0001.
+
+A storage convention SHOULD be reviewed when it affects:
+
+- Object Identity;
+- metadata;
+- relationships;
+- Source References;
+- provenance;
+- Lifecycle State;
+- Authority Level;
+- Privacy Classification;
+- Validation;
+- source distinction;
+- Knowledge Record distinction;
+- governed document authority;
+- draft, review, or approval handling;
+- archive, backup, or restoration behavior;
+- synchronization behavior;
+- indexing behavior;
+- import behavior;
+- export behavior;
+- migration behavior;
+- compatibility;
+- implementation independence;
+- downstream use.
+
+A storage change SHOULD preserve historical traceability.
+
+Where a storage change moves, renames, reorganizes, migrates, exports, imports, archives, restores, synchronizes, indexes, or transforms governed entities, the change SHOULD preserve enough context to determine what changed, why it changed where applicable, what process performed the change, what review occurred where applicable, and what compatibility concerns remain.
+
+Storage governance MUST preserve privacy boundaries.
+
+A storage governance decision MUST NOT expose restricted knowledge merely because reorganization, migration, validation, indexing, synchronization, backup, export, publication, implementation convenience, workflow convenience, or agent processing would be easier.
+
+Storage evolution SHOULD support backward compatibility where practical.
+
+Backward compatibility means existing governed entities remain interpretable, reviewable, portable, privacy-respecting, provenance-preserving, validation-compatible, migration-compatible, and implementation-independent after storage expectations change.
+
+A storage change that cannot preserve backward compatibility SHOULD document the compatibility risk and SHOULD define migration, repair, archival, validation, or review expectations.
+
+Storage governance SHOULD prevent storage drift.
+
+Storage drift occurs when storage behavior changes informally through folder habits, naming habits, implementation defaults, synchronization behavior, backup behavior, indexing behavior, agent behavior, workflow convenience, plugin behavior, local scripts, or undocumented practice.
+
+A storage practice is not part of The Brain Standard merely because it is repeated, automated, convenient, implemented, indexed, synchronized, backed up, or used by an agent.
+
+A storage practice becomes part of The Brain Standard only when it is documented, reviewed, and approved at the appropriate authority level.
+
+Storage Governance and Evolution is successful when storage architecture can improve over time without allowing storage mechanisms, tools, implementations, agents, workflows, or habits to redefine governed meaning.
+
+## 17. Implementation Boundaries
+
+Implementation Boundaries define the limits between the SS-0001 storage standard and the specific tools, vaults, repositories, databases, file systems, cloud services, scripts, validators, agents, workflows, interfaces, and future systems that may implement or support it.
+
+An implementation may realize SS-0001.
+
+An implementation does not become SS-0001.
+
+An implementation MAY include:
+
+- an Obsidian vault;
+- a plain-text repository;
+- a Git repository;
+- a local file system;
+- a cloud storage system;
+- a database;
+- an archive system;
+- a backup system;
+- a synchronization system;
+- an indexing system;
+- a search system;
+- a graph system;
+- an agent workspace;
+- a workflow environment;
+- a validation tool;
+- a migration tool;
+- a custom software platform;
+- a future storage implementation.
+
+Implementation choices MAY support storage behavior.
+
+Implementation choices MUST NOT define standard meaning by themselves.
+
+An implementation MUST NOT make governed meaning dependent only on:
+
+- application behavior;
+- plugin behavior;
+- operating-system behavior;
+- cloud-service behavior;
+- database internals;
+- folder views;
+- file-browser views;
+- user-interface state;
+- hidden metadata;
+- local settings;
+- sync settings;
+- backup settings;
+- index settings;
+- graph views;
+- search rankings;
+- agent memory;
+- workflow memory;
+- implementation-specific labels;
+- undocumented behavior.
+
+An implementation MAY use exact folder paths, filenames, file extensions, schemas, front matter, database fields, scripts, templates, plugins, validators, sync tools, backup tools, archive tools, indexers, or migration tools.
+
+Those implementation details are compliant only when they preserve the standard-level storage behavior defined by SS-0001 and the higher-authority documents.
+
+An implementation profile SHOULD make clear:
+
+- what storage environment it realizes;
+- what storage categories it uses;
+- what storage boundaries it uses;
+- how Source Material is stored;
+- how Knowledge Records are stored;
+- how governed documents are stored;
+- how drafts are handled;
+- how review and approval are handled;
+- how archives are handled;
+- how backups are handled;
+- how restoration is handled;
+- how synchronization is handled;
+- how indexing is handled;
+- how import is handled;
+- how export is handled;
+- how migration is handled;
+- how privacy boundaries are preserved;
+- how validation is performed or supported;
+- what implementation-specific behavior exists;
+- what behavior is standard-level and what behavior is implementation-specific.
+
+Implementation-specific metadata MAY exist.
+
+Implementation-specific metadata MUST remain distinguishable from standard metadata unless a governed standard or specification defines its standard meaning.
+
+Implementation-specific identifiers MAY exist.
+
+Implementation-specific identifiers MUST remain distinguishable from Object Identity unless a governed standard or specification defines their identity role.
+
+Implementation-specific links MAY exist.
+
+Implementation-specific links MUST remain distinguishable from governed relationships unless a governed standard or specification defines their relationship role.
+
+Implementation-specific validation MAY exist.
+
+Implementation-specific validation MUST remain distinguishable from standard Validation unless a governed standard, specification, workflow, validation profile, or human review defines its validation scope.
+
+Implementation-specific storage status MAY exist.
+
+Implementation-specific storage status MUST remain distinguishable from Lifecycle State, Authority Level, Privacy Classification, Validation State, approval, publication permission, export permission, synchronization permission, indexing permission, backup permission, agent-use permission, workflow-use permission, implementation-use permission, and downstream-use permission.
+
+An implementation MAY automate storage behavior.
+
+Automation MUST preserve reviewability where automation affects Object Identity, metadata, relationships, Source References, provenance, Lifecycle State, Authority Level, Privacy Classification, Validation, import, export, migration, backup, synchronization, indexing, publication, or downstream use.
+
+An implementation MAY use agents or workflows to support storage tasks.
+
+Agents and workflows MUST remain within their governed boundaries.
+
+Agent or workflow convenience MUST NOT override storage governance, privacy boundaries, validation scope, lifecycle state, authority scope, provenance requirements, source distinction, Object Identity, or implementation independence.
+
+An implementation MAY fail.
+
+SS-0001 is successful only if governed knowledge remains understandable, portable, reviewable, privacy-respecting, provenance-preserving, validation-compatible, migration-compatible, and recoverable when an implementation is replaced, removed, upgraded, corrupted, unavailable, deprecated, or abandoned.
+
+Implementation Boundaries are successful when implementations can realize, support, automate, validate, migrate, synchronize, back up, restore, index, and present storage behavior without becoming the authority that defines The Brain Standard.
+
+## 18. Conformance and Success Criteria
+
+Conformance and Success Criteria define how SS-0001 should be evaluated at the standard level.
+
+A storage architecture conforms to SS-0001 when it preserves governed entities without allowing storage mechanisms to define governed meaning by themselves.
+
+SS-0001 conformance is evaluated within a defined scope.
+
+A conformance scope MAY include:
+
+- a storage rule;
+- a storage representation;
+- a Source Material storage area;
+- a Knowledge Record storage area;
+- a governed document storage area;
+- a draft area;
+- a review area;
+- an approval area;
+- an archive;
+- a backup;
+- a restoration process;
+- a synchronization target;
+- an index;
+- a cache;
+- an import package;
+- an export package;
+- a migration package;
+- a repository;
+- a vault;
+- a database;
+- an implementation workspace;
+- an implementation profile;
+- a full storage environment;
+- another governed storage scope.
+
+A conformance claim MUST identify its scope where scope affects interpretation.
+
+A conformance claim MUST NOT imply broader conformance than the evaluated scope supports.
+
+A partial conformance claim MUST remain distinguishable from full conformance.
+
+A tool-specific conformance claim MUST remain distinguishable from standard-level conformance.
+
+A validation result MUST NOT be treated as full SS-0001 conformance unless the validation scope explicitly supports that interpretation.
+
+A storage environment conforms to SS-0001 only when it preserves or supports preservation of:
+
+- Object Identity;
+- metadata;
+- relationships;
+- Source References;
+- provenance;
+- Lifecycle State;
+- Authority Level;
+- Privacy Classification;
+- Validation;
+- compatibility expectations;
+- source distinction;
+- Knowledge Record distinction;
+- governed document distinction;
+- implementation file distinction;
+- draft, review, and approval distinction;
+- archive, backup, and restoration behavior;
+- synchronization behavior;
+- indexing behavior;
+- import behavior;
+- export behavior;
+- migration behavior;
+- implementation-independence expectations.
+
+A conformant storage architecture MUST NOT treat any of the following as the sole source of critical meaning:
+
+- folder placement;
+- filename;
+- file extension;
+- vault location;
+- repository path;
+- database table;
+- archive location;
+- backup location;
+- synchronization target;
+- index location;
+- cache location;
+- tag convention;
+- application view;
+- plugin behavior;
+- user-interface state;
+- hidden application state;
+- agent memory;
+- workflow memory;
+- implementation-specific behavior;
+- undocumented practice.
+
+A conformant storage architecture MUST preserve Source Material and Knowledge Records as distinguishable concerns.
+
+A conformant storage architecture MUST preserve governed document authority boundaries.
+
+A conformant storage architecture MUST preserve privacy boundaries.
+
+A conformant storage architecture MUST preserve validation scope.
+
+A conformant storage architecture MUST preserve implementation independence.
+
+A conformant storage architecture SHOULD support human inspection where practical.
+
+A conformant storage architecture SHOULD support AI interpretation where practical.
+
+A conformant storage architecture SHOULD support portability across storage methods.
+
+A conformant storage architecture SHOULD support migration without semantic loss.
+
+A conformant storage architecture SHOULD support backup and restoration without identity confusion.
+
+A conformant storage architecture SHOULD support synchronization without privacy exposure.
+
+A conformant storage architecture SHOULD support indexing without allowing indexes, embeddings, summaries, tags, search rankings, graph positions, or caches to redefine governed meaning.
+
+A conformant storage architecture SHOULD support repair where storage issues are found.
+
+A conformant storage architecture SHOULD support governed evolution over time.
+
+SS-0001 does not require a specific application, vault tool, repository system, database, cloud provider, synchronization tool, backup tool, archive format, checksum method, indexer, search engine, graph engine, AI model, agent framework, workflow engine, operating system, file system, plugin, script, or user interface.
+
+Those implementation choices MAY be used.
+
+They are compliant only when they preserve SS-0001 behavior and the higher-authority standards.
+
+SS-0001 is successful when future humans, agents, workflows, validators, storage systems, migration processes, import processes, export processes, backup processes, restoration processes, synchronization processes, indexing systems, and implementations can determine:
+
+- what storage environment is being used;
+- what stored representation is being used;
+- what governed entity is represented;
+- whether the entity is Source Material, a Knowledge Record, a governed document, an implementation file, an agent file, a workflow file, a supporting asset, a backup, an export, an import, a migration item, an archive, an index, a cache, or another storage representation;
+- whether Object Identity is preserved;
+- whether metadata is preserved;
+- whether relationships are preserved;
+- whether Source References are preserved;
+- whether provenance is preserved;
+- whether Lifecycle State is preserved;
+- whether Authority Level is preserved;
+- whether Privacy Classification is preserved;
+- whether Validation State or validation expectations are preserved;
+- whether source distinction is preserved;
+- whether Knowledge Record distinction is preserved;
+- whether document authority is preserved;
+- whether draft, review, approval, rejection, deprecation, supersession, archival, restriction, quarantine, pending-validation, and needs-repair states remain distinguishable where applicable;
+- whether archives, backups, restorations, synchronizations, indexes, imports, exports, and migrations preserve governed meaning;
+- whether privacy boundaries remain intact;
+- whether validation claims remain scoped;
+- whether implementation-specific behavior remains distinguishable from standard meaning;
+- whether storage can evolve without governance drift;
+- whether the governed knowledge remains portable across implementation replacement.
+
+SS-0001 is not successful if storage behavior causes:
+
+- Object Identity confusion;
+- Source Material and Knowledge Record confusion;
+- metadata meaning loss;
+- relationship meaning loss;
+- Source Reference loss;
+- provenance loss;
+- lifecycle confusion;
+- authority confusion;
+- privacy exposure;
+- validation overstatement;
+- compatibility loss;
+- implementation lock-in;
+- governance drift;
+- historical traceability loss;
+- import ambiguity;
+- export ambiguity;
+- migration loss;
+- backup confusion;
+- restoration confusion;
+- synchronization exposure;
+- indexing exposure;
+- downstream-use ambiguity.
+
+SS-0001 is complete when it defines storage architecture clearly enough for later storage specifications, implementation profiles, reference implementations, validators, templates, migration specifications, backup specifications, synchronization specifications, indexing specifications, agent standards, workflow standards, and operational guides to build on it without redefining storage meaning or weakening the prior standards.
