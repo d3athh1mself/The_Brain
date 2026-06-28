@@ -3,7 +3,7 @@
 Document ID: KS-0009
 Title: Validation Standard
 Version: 0.1.0
-Status: Draft
+Status: Approved
 Created: 2026-06-27
 Last Updated: 2026-06-27
 Authority: Standard
