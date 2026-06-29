@@ -3,7 +3,7 @@
 Document ID: TB-0002
 Title: Layered Architecture
 Version: 0.1.0
-Status: Draft
+Status: Approved
 Created: 2026-06-25
 Last Updated: 2026-06-25
 Authority: Constitutional
