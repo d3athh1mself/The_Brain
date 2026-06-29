@@ -3,7 +3,7 @@
 Document ID: AG-SPEC-0002
 Title: Subagent Prompt and Role Profile Specification
 Version: 0.1.0
-Status: Draft
+Status: Approved
 Created: 2026-06-29
 Last Updated: 2026-06-29
 Authority: Specification
