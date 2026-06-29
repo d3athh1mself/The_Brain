@@ -570,3 +570,1540 @@ A governed field-name change SHOULD include:
 A future specification MAY define aliases, legacy field mappings, deprecated field names, or implementation-specific mappings.
 
 Such mappings MUST preserve the governed meaning of the SC-0001 field.
+
+## 7. Placeholder Value Rules
+
+Placeholder values exist so that required fields remain visible even when the final field value is not yet known, assigned, reviewed, approved, validated, or applicable.
+
+A required metadata field MUST NOT be omitted merely because the correct value is unknown.
+
+When a required value is not yet available, the field MUST remain present with an approved placeholder value.
+
+Placeholder values make incomplete records easier to inspect, validate, route, repair, and review.
+
+SC-0001 recognizes the following bootstrap placeholder values:
+
+```yaml
+TBD
+unknown
+not_applicable
+pending_review
+unassigned
+none
+[]
+```
+
+`TBD` means the value is required but has not yet been assigned.
+
+`unknown` means the value may exist but cannot currently be determined from available information.
+
+`not_applicable` means the field does not apply to the record in the current context.
+
+`pending_review` means the value has been proposed, inferred, imported, generated, or assigned but has not yet completed required review.
+
+`unassigned` means a human, agent, workflow, reviewer, validator, owner, or responsible actor has not yet been assigned.
+
+`none` means the absence of a value has been intentionally recorded.
+
+`[]` means the field is a list field and currently has no entries.
+
+Placeholder values MUST be used consistently.
+
+A placeholder value MUST NOT be used to hide uncertainty, avoid review, bypass validation, weaken privacy handling, avoid provenance, or imply approval.
+
+A placeholder value MUST NOT be treated as equivalent to a confirmed value.
+
+A Knowledge Record containing placeholder values MAY be valid as a Draft or Pending Review record.
+
+A Knowledge Record containing placeholder values SHOULD NOT be treated as Approved unless the applicable workflow, validation profile, or approval scope explicitly permits those placeholders.
+
+A placeholder value SHOULD trigger review when the field affects:
+
+- Object Identity;
+- record interpretation;
+- source support;
+- provenance;
+- relationships;
+- Lifecycle State;
+- Authority Level;
+- Privacy Classification;
+- Validation State;
+- review routing;
+- publication;
+- export;
+- migration;
+- downstream use.
+
+Placeholder values SHOULD remain machine-readable and human-readable.
+
+Placeholder values SHOULD be written exactly as defined in this section unless a future governed specification revises them.
+
+A future specification MAY define additional placeholder values, field-specific placeholder values, migration placeholder values, import placeholder values, validation placeholder values, relationship placeholder values, source-reference placeholder values, or implementation mappings.
+
+Such future placeholder values MUST preserve the meaning, traceability, reviewability, and validation expectations defined by SC-0001.
+
+## 8. Required Metadata Field Set
+
+A bare usable Knowledge Record MUST include a minimum required metadata field set.
+
+The required field set exists to ensure that every Knowledge Record remains identifiable, interpretable, source-aware, provenance-aware, lifecycle-aware, authority-aware, privacy-aware, validation-aware, reviewable, portable, and usable by humans, agents, workflows, validators, storage systems, and implementations.
+
+The following metadata fields are REQUIRED for the default bare usable Knowledge Record:
+
+```yaml
+object_id: TBD
+record_id: TBD
+record_type: TBD
+title: TBD
+summary: TBD
+lifecycle_state: draft
+authority_level: unreviewed
+privacy_classification: private
+validation_state: not_validated
+source_refs: []
+provenance: TBD
+relationships: []
+created: TBD
+updated: TBD
+review_required: true
+agent_assisted: false
+human_reviewer: unassigned
+```
+
+The required field set is intentionally minimal for bare usable deployment.
+
+It does not represent every field The Brain Standard may eventually support.
+
+Future specifications MAY define additional fields for specialized object types, source-reference handling, relationship records, validation profiles, agent activity records, review records, import records, export records, migration records, publication records, implementation mappings, or downstream-use packages.
+
+The required field set MUST remain present in TEMPLATE-0001 — Knowledge Record Template unless a future governed specification revises the template requirements.
+
+A Knowledge Record missing one or more required fields has a structural validation issue.
+
+A Knowledge Record with required fields present but populated with placeholder values may still require review, repair, validation, source inspection, privacy review, authority review, relationship review, or lifecycle review.
+
+Required field presence does not equal approval.
+
+Required field presence does not equal validation success.
+
+Required field presence does not equal publication permission.
+
+Required field presence does not equal export permission.
+
+Required field presence does not equal migration readiness.
+
+Required field presence does not equal downstream-use readiness.
+
+The required field set is divided into the following metadata groups:
+
+| Metadata Group                                         | Required Fields                                                                    | Purpose                                                                                                                                     |
+| ------------------------------------------------------ | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| Identity and descriptive metadata                      | `object_id`, `record_id`, `record_type`, `title`, `summary`                        | Identifies and describes the Knowledge Record and the Knowledge Object it represents.                                                       |
+| Lifecycle, authority, privacy, and validation metadata | `lifecycle_state`, `authority_level`, `privacy_classification`, `validation_state` | Defines governed handling, trust boundary, access boundary, and validation status.                                                          |
+| Source and provenance metadata                         | `source_refs`, `provenance`                                                        | Preserves source support, origin, transformation, authorship, agent involvement, workflow involvement, review context, or other provenance. |
+| Relationship metadata                                  | `relationships`                                                                    | Preserves explicit proposed or established relationships to other governed entities.                                                        |
+| Date and maintenance metadata                          | `created`, `updated`                                                               | Preserves basic creation and update context.                                                                                                |
+| Review and agent metadata                              | `review_required`, `agent_assisted`, `human_reviewer`                              | Makes review need and agent involvement visible.                                                                                            |
+
+The required field set SHOULD be represented near the top of the Knowledge Record where practical.
+
+For Markdown-compatible records, the required field set SHOULD appear in front matter or another clearly marked metadata area.
+
+Example:
+
+```yaml
+---
+object_id: TBD
+record_id: TBD
+record_type: concept
+title: Example Knowledge Record
+summary: TBD
+lifecycle_state: draft
+authority_level: unreviewed
+privacy_classification: private
+validation_state: not_validated
+source_refs: []
+provenance: TBD
+relationships: []
+created: 2026-06-28
+updated: 2026-06-28
+review_required: true
+agent_assisted: false
+human_reviewer: unassigned
+---
+```
+
+A compliant implementation MAY store the same fields outside Markdown front matter, but the required fields MUST remain explicit, inspectable, portable, and governed.
+
+## 9. Identity and Descriptive Fields
+
+Identity and descriptive fields identify the Knowledge Object, identify the Knowledge Record, classify the record at a basic level, and make the record understandable to humans and agents.
+
+Identity and descriptive fields MUST preserve the distinction between:
+
+- the Knowledge Object;
+- the Knowledge Record;
+- the title;
+- the record type;
+- aliases;
+- summaries;
+- keywords;
+- filenames;
+- folders;
+- implementation identifiers;
+- temporary identifiers.
+
+Identity and descriptive metadata MUST NOT allow titles, filenames, folder paths, aliases, tags, search labels, graph labels, implementation IDs, or workflow IDs to replace stable Object Identity.
+
+### 9.1 `object_id`
+
+`object_id` is REQUIRED.
+
+`object_id` identifies the Knowledge Object represented by the Knowledge Record.
+
+The value of `object_id` MUST refer to stable Object Identity where stable Object Identity has already been assigned.
+
+If stable Object Identity has not yet been assigned, `object_id` MUST be present with the placeholder value `TBD`.
+
+Example:
+
+```yaml
+object_id: TBD
+```
+
+A Draft Knowledge Record MAY use `TBD` for `object_id`.
+
+An Approved Knowledge Record SHOULD NOT use `TBD` for `object_id` unless a future governed specification explicitly allows that exception.
+
+`object_id` MUST NOT be replaced by:
+
+- filename;
+- folder path;
+- title;
+- alias;
+- tag;
+- implementation ID;
+- database row ID;
+- plugin ID;
+- workflow ID;
+- agent ID;
+- validation ID;
+- import ID;
+- export ID;
+- migration ID.
+
+Those identifiers MAY be recorded elsewhere when useful, but they do not replace `object_id`.
+
+### 9.2 `record_id`
+
+`record_id` is REQUIRED.
+
+`record_id` identifies the specific Knowledge Record.
+
+`record_id` is distinct from `object_id`.
+
+A Knowledge Object may have one or more Knowledge Records over time, including draft records, reviewed records, archived records, migrated records, translated records, derivative records, source-derived records, or future representation-specific records.
+
+Example:
+
+```yaml
+record_id: TBD
+```
+
+If a stable record identifier has not yet been assigned, `record_id` MUST be present with the placeholder value `TBD`.
+
+`record_id` MUST NOT replace `object_id`.
+
+`record_id` supports review, maintenance, migration, import, export, archival, and traceability for the record representation.
+
+### 9.3 `record_type`
+
+`record_type` is REQUIRED.
+
+`record_type` identifies the bootstrap type of Knowledge Record.
+
+`record_type` supports basic routing, review, validation, search, template selection, and agent handling.
+
+SC-0001 defines the following bootstrap `record_type` values:
+
+```yaml
+concept
+person
+organization
+project
+source_summary
+decision
+procedure
+reference
+journal
+task
+event
+claim
+question
+other
+unknown
+```
+
+A Knowledge Record SHOULD use the most specific applicable bootstrap value.
+
+`unknown` MAY be used when the record type cannot yet be determined.
+
+`other` MAY be used when the record type is known but not represented by the bootstrap vocabulary.
+
+Use of `unknown` or `other` SHOULD trigger review if record type affects routing, validation, authority, privacy, relationships, export, publication, migration, or downstream use.
+
+The bootstrap `record_type` vocabulary is intentionally limited.
+
+A future object-type specification MAY define expanded record types, object types, type-specific metadata, type-specific templates, allowed values, validation rules, migration mappings, or implementation mappings.
+
+Such future values MUST preserve compatibility with SC-0001 or define a governed migration path.
+
+### 9.4 `title`
+
+`title` is REQUIRED.
+
+`title` provides the primary human-readable name of the Knowledge Record.
+
+Example:
+
+```yaml
+title: Knowledge Record Metadata Field Specification
+```
+
+A title SHOULD be clear, concise, and recognizable.
+
+A title SHOULD help humans and agents identify the record during review, navigation, search, validation, routing, and maintenance.
+
+A title MUST NOT replace `object_id`.
+
+A title MUST NOT be treated as stable Object Identity.
+
+A title MAY change when clarity, correction, review, deprecation, supersession, translation, migration, or implementation presentation requires it.
+
+Changing a title SHOULD NOT change `object_id`.
+
+Changing a title SHOULD NOT change `record_id` unless the record itself is being replaced, split, merged, superseded, or otherwise governed through a record-level change.
+
+If a title has not yet been assigned, the field MUST remain present with the placeholder value `TBD`.
+
+### 9.5 `summary`
+
+`summary` is REQUIRED.
+
+`summary` provides a short human-readable description of the Knowledge Record.
+
+Example:
+
+```yaml
+summary: Defines the required metadata fields for bare usable Knowledge Records.
+```
+
+A summary SHOULD explain what the record is about without replacing the body of the Knowledge Record.
+
+A summary SHOULD be short enough to support scanning, review, search, agent routing, validation reports, import review, export review, migration review, and downstream-use review.
+
+A summary MUST NOT introduce claims that are not supported by the record body, Source References, provenance, or review context.
+
+A summary MAY be drafted by an agent, but agent-drafted summaries SHOULD remain reviewable when the summary affects interpretation, routing, privacy, authority, validation, publication, export, migration, or downstream use.
+
+If a summary has not yet been written, the field MUST remain present with the placeholder value `TBD`.
+
+### 9.6 `aliases`
+
+`aliases` is RECOMMENDED.
+
+`aliases` records alternate names, prior names, abbreviations, search labels, common spellings, or recognition aids associated with the Knowledge Record or Knowledge Object.
+
+Example:
+
+```yaml
+aliases:
+  - KR metadata fields
+  - Knowledge Record fields
+```
+
+Aliases improve search, recall, navigation, import matching, duplicate detection, and migration support.
+
+Aliases MUST NOT replace `object_id`.
+
+Aliases MUST NOT be treated as approved titles unless a governed review or specification explicitly assigns that role.
+
+Aliases SHOULD remain reviewable when they affect duplicate detection, identity matching, relationship creation, authority, privacy, export, migration, or downstream use.
+
+If no aliases are known or needed, the field MAY be omitted unless required by a future template, validator, implementation profile, or object-type specification.
+
+### 9.7 `keywords`
+
+`keywords` is RECOMMENDED.
+
+`keywords` records implementation-independent descriptive terms that support discovery, search, recall, routing, review, validation, agent handling, and maintenance.
+
+Example:
+
+```yaml
+keywords:
+  - metadata
+  - knowledge-record
+  - specification
+```
+
+`keywords` SHOULD be descriptive rather than decorative.
+
+`keywords` MUST NOT replace governed relationship metadata.
+
+`keywords` MUST NOT replace `record_type`.
+
+`keywords` MUST NOT replace Lifecycle State, Authority Level, Privacy Classification, or Validation State.
+
+`keywords` SHOULD NOT depend on implementation-specific tag behavior.
+
+A future implementation profile MAY map `keywords` to implementation-specific tags, labels, topics, properties, or database fields.
+
+Such mappings MUST preserve the governed meaning of `keywords` and MUST NOT make implementation tags the standard.
+
+## 10. Lifecycle, Authority, Privacy, and Validation Fields
+
+Lifecycle, authority, privacy, and validation fields define how a Knowledge Record should be interpreted, handled, reviewed, routed, protected, validated, and used.
+
+These fields MUST remain distinct from one another.
+
+Lifecycle State describes the governed state of the Knowledge Record.
+
+Authority Level describes the degree of interpretive, governance, review, trust, or use authority assigned to the Knowledge Record within a defined scope.
+
+Privacy Classification describes permitted visibility, access, exposure, routing, synchronization, indexing, export, publication, backup, agent access, workflow access, implementation access, or downstream-use handling.
+
+Validation State describes whether the Knowledge Record satisfies applicable structural, metadata, identity, provenance, relationship, lifecycle, authority, privacy, compatibility, workflow, agent, implementation, import, export, or migration expectations.
+
+A Knowledge Record may be structurally valid but not approved.
+
+A Knowledge Record may be approved but private.
+
+A Knowledge Record may be authoritative but superseded.
+
+A Knowledge Record may be public but low-authority.
+
+A Knowledge Record may be draft but structurally valid.
+
+A Knowledge Record may be agent-assisted but still require human review.
+
+These fields MUST NOT be collapsed into a single `status` field.
+
+A generic `status` field SHOULD NOT be used as the governed field for lifecycle, authority, privacy, or validation because it creates ambiguity.
+
+### 10.1 `lifecycle_state`
+
+`lifecycle_state` is REQUIRED.
+
+`lifecycle_state` identifies the current governed lifecycle state of the Knowledge Record.
+
+Default bootstrap value:
+
+```yaml
+lifecycle_state: draft
+```
+
+SC-0001 defines the following bootstrap `lifecycle_state` values:
+
+```yaml
+draft
+pending_review
+pending_validation
+approved
+rejected
+needs_repair
+quarantined
+deprecated
+superseded
+archived
+restricted
+unknown
+```
+
+`draft` means the Knowledge Record is being created, revised, prepared, proposed, or otherwise not yet accepted for governed use.
+
+`pending_review` means the Knowledge Record requires human, workflow, validator, governance, privacy, authority, source-reference, relationship, or compatibility review before it may be treated as reviewed or approved.
+
+`pending_validation` means the Knowledge Record requires validation before it may be treated as valid within the applicable validation scope.
+
+`approved` means the Knowledge Record has been accepted for use within its stated scope.
+
+`rejected` means the Knowledge Record has been reviewed and not accepted for the intended use.
+
+`needs_repair` means the Knowledge Record has known structural, metadata, identity, relationship, source-reference, provenance, privacy, authority, validation, compatibility, workflow, agent, storage, import, export, migration, or implementation issues that require correction.
+
+`quarantined` means the Knowledge Record is isolated or withheld from normal use because of unresolved validity, safety, privacy, compatibility, source, provenance, authority, relationship, or integrity concerns.
+
+`deprecated` means the Knowledge Record remains historically available but is no longer recommended for future use.
+
+`superseded` means the Knowledge Record has been replaced by another governed record, object, decision, rule, version, or representation.
+
+`archived` means the Knowledge Record is preserved for historical, audit, compatibility, migration, governance, or reference purposes but is not treated as active by default.
+
+`restricted` means the Knowledge Record requires constrained handling because access, visibility, routing, publication, synchronization, indexing, export, backup, agent access, workflow access, implementation access, or downstream use is limited.
+
+`unknown` means the lifecycle state cannot currently be determined.
+
+Use of `unknown` SHOULD trigger review.
+
+`lifecycle_state` MUST NOT replace `authority_level`.
+
+`lifecycle_state` MUST NOT replace `privacy_classification`.
+
+`lifecycle_state` MUST NOT replace `validation_state`.
+
+`lifecycle_state` MUST NOT be inferred only from folder placement, filename, tag, user-interface state, workflow state, agent state, storage state, implementation state, or undocumented convention.
+
+### 10.2 `authority_level`
+
+`authority_level` is REQUIRED.
+
+`authority_level` identifies the authority assigned to the Knowledge Record within a defined scope.
+
+Default bootstrap value:
+
+```yaml
+authority_level: unreviewed
+```
+
+SC-0001 defines the following bootstrap `authority_level` values:
+
+```yaml
+unreviewed
+working
+source_only
+reviewed
+authoritative
+governed
+restricted_use
+not_authoritative
+disputed
+unknown
+```
+
+`unreviewed` means no human or governed review has confirmed authority.
+
+`working` means the Knowledge Record may support drafting, exploration, organization, or internal reasoning but should not be treated as authoritative.
+
+`source_only` means the record primarily represents or summarizes Source Material and does not independently carry interpretive authority beyond the source context.
+
+`reviewed` means the Knowledge Record has been reviewed but may still have limited authority, limited scope, unresolved issues, or downstream-use restrictions.
+
+`authoritative` means the Knowledge Record may be relied on for interpretation or use within its stated scope.
+
+`governed` means the Knowledge Record is part of a governed standard, specification, workflow, template, validation artifact, agent artifact, implementation artifact, decision record, or other formal governance structure.
+
+`restricted_use` means the Knowledge Record may be used only within a limited authority scope.
+
+`not_authoritative` means the Knowledge Record should not be relied on as an authority for interpretation, decision-making, workflow routing, publication, export, migration, or downstream use.
+
+`disputed` means the Knowledge Record contains unresolved conflict, disagreement, contradiction, uncertainty, or contested authority.
+
+`unknown` means the authority level cannot currently be determined.
+
+Use of `unknown`, `unreviewed`, `working`, `restricted_use`, `not_authoritative`, or `disputed` SHOULD trigger review when the Knowledge Record affects interpretation, publication, export, migration, automation, relationship creation, workflow routing, validation, agent reasoning, or downstream use.
+
+`authority_level` MUST NOT replace `lifecycle_state`.
+
+`authority_level` MUST NOT replace `validation_state`.
+
+`authority_level` MUST NOT replace `privacy_classification`.
+
+`authority_level` MUST NOT be inferred only from approval appearance, folder placement, source popularity, source reliability, agent confidence, workflow completion, implementation visibility, search ranking, graph centrality, or undocumented convention.
+
+### 10.3 `privacy_classification`
+
+`privacy_classification` is REQUIRED.
+
+`privacy_classification` identifies the privacy handling required for the Knowledge Record.
+
+Default bootstrap value:
+
+```yaml
+privacy_classification: private
+```
+
+SC-0001 defines the following bootstrap `privacy_classification` values:
+
+```yaml
+public
+internal
+private
+sensitive
+restricted
+unknown
+```
+
+`public` means the Knowledge Record may be visible or shared beyond the private working environment only when publication, export, synchronization, indexing, downstream-use, and authority requirements are also satisfied.
+
+`internal` means the Knowledge Record is intended for controlled use within a defined trusted environment.
+
+`private` means the Knowledge Record is intended for personal or limited-access use and should not be exposed publicly by default.
+
+`sensitive` means the Knowledge Record contains information requiring heightened protection, review, limited access, or careful routing.
+
+`restricted` means the Knowledge Record requires strict access, exposure, export, publication, synchronization, indexing, backup, agent-access, workflow-access, implementation-access, or downstream-use controls.
+
+`unknown` means the privacy classification cannot currently be determined.
+
+Use of `unknown` SHOULD trigger privacy review.
+
+`private` is the default bootstrap value because bare usable deployment should avoid accidental exposure.
+
+`public` MUST NOT be assigned merely because a record is approved, valid, stored in a public-facing folder, visible in an implementation, indexed by a tool, linked by another record, summarized by an agent, exported, migrated, or published.
+
+`privacy_classification` MUST NOT replace `lifecycle_state`.
+
+`privacy_classification` MUST NOT replace `authority_level`.
+
+`privacy_classification` MUST NOT replace `validation_state`.
+
+A Knowledge Record with `privacy_classification: sensitive`, `privacy_classification: restricted`, or `privacy_classification: unknown` SHOULD require human review before publication, export, synchronization, indexing, broad agent access, broad workflow access, or downstream use.
+
+### 10.4 `validation_state`
+
+`validation_state` is REQUIRED.
+
+`validation_state` identifies the validation status of the Knowledge Record within the applicable validation scope.
+
+Default bootstrap value:
+
+```yaml
+validation_state: not_validated
+```
+
+SC-0001 defines the following bootstrap `validation_state` values:
+
+```yaml
+not_validated
+pending_validation
+valid
+valid_with_warnings
+invalid
+needs_repair
+unknown
+```
+
+`not_validated` means validation has not yet been performed.
+
+`pending_validation` means validation is required or underway but not complete.
+
+`valid` means the Knowledge Record satisfies the applicable validation scope.
+
+`valid_with_warnings` means the Knowledge Record satisfies mandatory validation requirements but has warnings, limitations, risks, incomplete recommended fields, review notes, or non-blocking issues.
+
+`invalid` means the Knowledge Record fails one or more mandatory validation requirements within the applicable validation scope.
+
+`needs_repair` means validation identified issues that require correction before the record can satisfy the applicable validation scope.
+
+`unknown` means the validation state cannot currently be determined.
+
+Use of `unknown`, `not_validated`, `pending_validation`, `valid_with_warnings`, `invalid`, or `needs_repair` SHOULD trigger review, repair, routing, or validation follow-up when the Knowledge Record affects authority, privacy, publication, export, migration, automation, relationship creation, workflow routing, agent reasoning, or downstream use.
+
+`validation_state` MUST NOT replace `lifecycle_state`.
+
+`validation_state` MUST NOT replace `authority_level`.
+
+`validation_state` MUST NOT replace `privacy_classification`.
+
+Validation success does not equal approval.
+
+Validation success does not equal authority.
+
+Validation success does not equal privacy clearance.
+
+Validation success does not equal publication permission.
+
+Validation success does not equal export permission.
+
+Validation success does not equal migration readiness.
+
+Validation success does not equal downstream-use readiness.
+
+## 11. Source, Provenance, and Relationship Fields
+
+Source, provenance, and relationship fields preserve traceability.
+
+These fields help future humans, agents, workflows, validators, storage systems, import processes, export processes, migration processes, and implementations understand where a Knowledge Record came from, what supports it, how it was created or changed, and what other governed entities it connects to.
+
+Source, provenance, and relationship fields MUST preserve the distinction between:
+
+- Source Material;
+- Source References;
+- citations;
+- evidence;
+- attribution;
+- provenance;
+- extraction history;
+- transformation history;
+- relationships;
+- inferred relationships;
+- proposed relationships;
+- approved relationships;
+- implementation links;
+- backlinks;
+- tags;
+- search associations;
+- graph positions;
+- agent suggestions;
+- workflow outputs.
+
+A Knowledge Record may have no Source References.
+
+A Knowledge Record may have one Source Reference.
+
+A Knowledge Record may have many Source References.
+
+A Knowledge Record may be human-created, source-derived, agent-assisted, workflow-generated, imported, migrated, reviewed, validated, or a mixture of those origins.
+
+A Knowledge Record may have no relationships.
+
+A Knowledge Record may contain proposed relationships.
+
+A Knowledge Record may contain approved relationships.
+
+A Knowledge Record may contain relationships requiring review.
+
+These distinctions MUST remain visible.
+
+### 11.1 `source_refs`
+
+`source_refs` is REQUIRED.
+
+`source_refs` identifies Source Material that supports, explains, contextualizes, contradicts, originates, or otherwise relates to the Knowledge Record.
+
+Default bootstrap value:
+
+```yaml
+source_refs: []
+```
+
+`source_refs` MUST be represented as a list.
+
+If no Source References are known or applicable, the field MUST remain present with an empty list.
+
+Example:
+
+```yaml
+source_refs:
+  - SRC-0001
+  - SRC-0002
+```
+
+A source-derived Knowledge Record SHOULD NOT have an empty `source_refs` list unless the source is unknown, unavailable, restricted, missing, or pending review.
+
+When a source is unknown but required, `source_refs` SHOULD include a placeholder entry or the Knowledge Record SHOULD be routed for source review.
+
+Example:
+
+```yaml
+source_refs:
+  - unknown
+```
+
+`source_refs` MUST NOT be replaced by citations alone.
+
+A citation MAY support a Source Reference, but citation syntax does not define source-reference behavior by itself.
+
+`source_refs` MUST NOT be replaced by:
+
+- folder placement;
+- filenames;
+- backlinks;
+- tags;
+- copied excerpts;
+- browser bookmarks;
+- search results;
+- implementation links;
+- agent memory;
+- workflow memory;
+- undocumented source notes.
+
+A future source-reference specification MAY define exact source-reference identifiers, source schemas, citation syntax, archival requirements, source availability values, source reliability values, source authority values, source privacy fields, extraction records, and validation rules.
+
+### 11.2 `provenance`
+
+`provenance` is REQUIRED.
+
+`provenance` identifies the origin, source, reasoning, transformation, creator, editor, agent, workflow, import, export, migration, validation, review, evidence, or change context associated with the Knowledge Record.
+
+Default bootstrap value:
+
+```yaml
+provenance: TBD
+```
+
+For bare usable deployment, `provenance` MAY be represented as a short text value, a structured object, or a reference to a provenance record.
+
+A simple text representation is acceptable for early draft use:
+
+```yaml
+provenance: Created from user-provided notes during controlled ingestion.
+```
+
+A structured representation is RECOMMENDED when practical:
+
+```yaml
+provenance:
+  created_by: human
+  created_method: manual
+  source_basis: human_created
+  agent_activity_refs: []
+  workflow_refs: []
+  review_refs: []
+```
+
+SC-0001 defines the following bootstrap `created_method` values when structured provenance is used:
+
+```yaml
+manual
+agent_assisted
+workflow_generated
+imported
+migrated
+extracted
+transformed
+mixed
+unknown
+```
+
+SC-0001 defines the following bootstrap `source_basis` values when structured provenance is used:
+
+```yaml
+human_created
+source_derived
+source_summarized
+source_extracted
+agent_generated
+workflow_generated
+imported
+migrated
+mixed
+unknown
+none
+```
+
+`provenance` MUST remain distinguishable from `source_refs`.
+
+`source_refs` identify source material.
+
+`provenance` explains origin, creation, transformation, authorship, agent involvement, workflow involvement, review involvement, validation involvement, import context, export context, migration context, or change context.
+
+A Knowledge Record with agent involvement SHOULD make that involvement visible through both `provenance` and the agent fields defined in this specification.
+
+A Knowledge Record with workflow involvement SHOULD make that involvement visible through `provenance` or a related workflow record.
+
+A Knowledge Record with import or migration history SHOULD preserve enough provenance for future validation, review, repair, export, migration, and compatibility checking.
+
+`provenance` MUST NOT be hidden only in agent memory, workflow memory, implementation logs, application state, file history, sync history, or undocumented notes when provenance affects interpretation, source support, relationships, lifecycle state, authority, privacy, validation, publication, export, migration, or downstream use.
+
+### 11.3 `relationships`
+
+`relationships` is REQUIRED.
+
+`relationships` records explicit proposed, reviewed, approved, rejected, deprecated, superseded, inferred, or otherwise governed relationships between the Knowledge Record and other governed entities.
+
+Default bootstrap value:
+
+```yaml
+relationships: []
+```
+
+`relationships` MUST be represented as a list.
+
+If no relationships are known or applicable, the field MUST remain present with an empty list.
+
+A simple list representation MAY be used for early draft records:
+
+```yaml
+relationships:
+  - OBJ-0001
+  - OBJ-0002
+```
+
+A structured relationship representation is RECOMMENDED when relationship meaning, direction, provenance, confidence, review state, lifecycle state, authority, privacy, validation, migration, export, or downstream use matters.
+
+Example:
+
+```yaml
+relationships:
+  - target_id: OBJ-0001
+    relationship_type: related_to
+    relationship_state: proposed
+    relationship_direction: outbound
+    relationship_provenance: TBD
+```
+
+SC-0001 defines the following bootstrap `relationship_state` values when structured relationships are used:
+
+```yaml
+proposed
+inferred
+reviewed
+approved
+rejected
+needs_review
+deprecated
+superseded
+unknown
+```
+
+SC-0001 defines the following bootstrap `relationship_direction` values when structured relationships are used:
+
+```yaml
+outbound
+inbound
+bidirectional
+non_directional
+unknown
+```
+
+SC-0001 defines the following bootstrap `relationship_type` values for early use:
+
+```yaml
+related_to
+supports
+contradicts
+depends_on
+part_of
+contains
+derived_from
+supersedes
+superseded_by
+references
+duplicates
+possible_duplicate
+other
+unknown
+```
+
+The bootstrap relationship vocabulary is intentionally limited.
+
+A future relationship specification MAY define expanded relationship types, directionality rules, relationship identifiers, relationship confidence values, relationship lifecycle values, relationship authority values, relationship privacy handling, graph schemas, validation rules, migration mappings, and implementation mappings.
+
+`relationships` MUST NOT be replaced by backlinks alone.
+
+`relationships` MUST NOT be replaced by folder proximity, tags, search similarity, graph location, plugin behavior, agent suggestions, workflow suggestions, or implementation-generated links.
+
+Backlinks, tags, search similarity, graph location, plugin behavior, agent suggestions, workflow suggestions, and implementation-generated links MAY help discover possible relationships.
+
+They do not become governed relationships unless represented, reviewed, validated, or approved according to the applicable standards, specifications, or workflows.
+
+## 12. Date, Review, and Agent Fields
+
+Date, review, and agent fields preserve basic traceability for creation, update, review, and agent assistance.
+
+These fields help humans, agents, workflows, validators, storage systems, import processes, export processes, migration processes, and implementations determine when a Knowledge Record was created or updated, whether review is required, whether an agent assisted, and who is responsible for human review.
+
+Date, review, and agent fields MUST remain distinct from lifecycle, authority, privacy, validation, source-reference, provenance, relationship, workflow, storage, and implementation behavior.
+
+A record being recently updated does not mean it is approved.
+
+A record having a reviewer does not mean it has passed review.
+
+A record being agent-assisted does not mean it is valid.
+
+A record not being agent-assisted does not mean it is authoritative.
+
+A record being reviewed does not mean it is public.
+
+A record being old does not mean it is deprecated.
+
+A record being new does not mean it is low-quality.
+
+### 12.1 `created`
+
+`created` is REQUIRED.
+
+`created` records the date the Knowledge Record was created.
+
+Default bootstrap value:
+
+```yaml
+created: TBD
+```
+
+The RECOMMENDED date format is ISO-style `YYYY-MM-DD`.
+
+Example:
+
+```yaml
+created: 2026-06-28
+```
+
+A future specification MAY define exact datetime, timezone, timestamp, created-at, imported-at, migrated-at, or event-log requirements.
+
+For bare usable deployment, `YYYY-MM-DD` is sufficient unless the workflow, implementation, import process, export process, migration process, review process, validation process, or agent activity requires more precise time tracking.
+
+`created` SHOULD represent creation of the Knowledge Record, not necessarily creation of the Knowledge Object, Source Material, original idea, original event, original publication, original file, or original source.
+
+Those other dates MAY be recorded in future fields or object-type-specific specifications.
+
+`created` MUST NOT replace provenance.
+
+### 12.2 `updated`
+
+`updated` is REQUIRED.
+
+`updated` records the date the Knowledge Record was last materially updated.
+
+Default bootstrap value:
+
+```yaml
+updated: TBD
+```
+
+The RECOMMENDED date format is ISO-style `YYYY-MM-DD`.
+
+Example:
+
+```yaml
+updated: 2026-06-28
+```
+
+`updated` SHOULD change when the Knowledge Record receives a material change to content, metadata, relationships, source references, provenance, lifecycle state, authority level, privacy classification, validation state, review status, agent activity references, workflow references, import context, export context, migration context, or downstream-use readiness.
+
+`updated` MAY remain unchanged for minor formatting corrections, whitespace changes, spelling corrections, or non-material edits unless a future governance process, implementation profile, validator, workflow, or audit process requires stricter tracking.
+
+`updated` MUST NOT replace review history.
+
+`updated` MUST NOT replace provenance.
+
+`updated` MUST NOT imply approval, validation success, authority, privacy clearance, publication permission, export permission, migration readiness, or downstream-use readiness.
+
+### 12.3 `review_required`
+
+`review_required` is REQUIRED.
+
+`review_required` indicates whether human review or governed review is required before the Knowledge Record may be treated as reviewed, approved, authoritative, publishable, exportable, migratable, or ready for downstream use.
+
+Default bootstrap value:
+
+```yaml
+review_required: true
+```
+
+SC-0001 defines the following bootstrap values:
+
+```yaml
+true
+false
+```
+
+`review_required: true` means review is required.
+
+`review_required: false` means review is not currently required within the applicable scope.
+
+`review_required: false` MUST NOT be used to bypass required review.
+
+`review_required: false` SHOULD only be used when review has been completed, determined not applicable, or waived under a governed workflow, specification, or approval scope.
+
+A Knowledge Record SHOULD use `review_required: true` when:
+
+- `object_id` is `TBD`;
+- `record_id` is `TBD`;
+- `record_type` is `unknown` or `other`;
+- `title` is `TBD`;
+- `summary` is `TBD`;
+- `lifecycle_state` is `draft`, `pending_review`, `pending_validation`, `needs_repair`, `quarantined`, `restricted`, or `unknown`;
+- `authority_level` is `unreviewed`, `working`, `restricted_use`, `not_authoritative`, `disputed`, or `unknown`;
+- `privacy_classification` is `sensitive`, `restricted`, or `unknown`;
+- `validation_state` is `not_validated`, `pending_validation`, `valid_with_warnings`, `invalid`, `needs_repair`, or `unknown`;
+- source support is missing, unknown, restricted, or disputed;
+- provenance is incomplete, unknown, agent-generated, imported, migrated, or pending review;
+- relationships are proposed, inferred, disputed, unknown, or pending review;
+- an agent assisted with creation, extraction, summarization, classification, relationship proposal, metadata proposal, validation, or review preparation;
+- publication, export, migration, broad synchronization, broad indexing, or downstream use is being considered.
+
+### 12.4 `agent_assisted`
+
+`agent_assisted` is REQUIRED.
+
+`agent_assisted` indicates whether an agent assisted with creation, extraction, summarization, classification, metadata proposal, relationship proposal, validation support, draft preparation, review preparation, import support, migration support, or other record activity.
+
+Default bootstrap value:
+
+```yaml
+agent_assisted: false
+```
+
+SC-0001 defines the following bootstrap values:
+
+```yaml
+true
+false
+```
+
+`agent_assisted: true` means agent assistance occurred.
+
+`agent_assisted: false` means no known agent assistance occurred.
+
+`agent_assisted: false` MUST NOT be used when an agent materially contributed to the record.
+
+A Knowledge Record with `agent_assisted: true` SHOULD preserve agent involvement in provenance, agent activity records, workflow logs, review records, or implementation logs where applicable.
+
+Agent assistance does not equal approval.
+
+Agent assistance does not equal authority.
+
+Agent assistance does not equal validation success.
+
+Agent assistance does not equal privacy clearance.
+
+Agent assistance does not equal publication permission.
+
+Agent assistance does not equal export permission.
+
+Agent assistance does not equal migration readiness.
+
+Agent assistance does not equal downstream-use readiness.
+
+### 12.5 `human_reviewer`
+
+`human_reviewer` is REQUIRED.
+
+`human_reviewer` identifies the human reviewer assigned to review the Knowledge Record where review is required or expected.
+
+Default bootstrap value:
+
+```yaml
+human_reviewer: unassigned
+```
+
+If no human reviewer has been assigned, the value MUST remain `unassigned`.
+
+If human review is not applicable under a governed workflow or specification, the value MAY be:
+
+```yaml
+human_reviewer: not_applicable
+```
+
+If a reviewer is assigned, the value SHOULD identify the reviewer in a stable, privacy-respecting, implementation-independent way.
+
+Example:
+
+```yaml
+human_reviewer: Daniel Balcom
+```
+
+or:
+
+```yaml
+human_reviewer: reviewer-0001
+```
+
+`human_reviewer` MUST NOT imply approval by itself.
+
+A named reviewer indicates assignment or participation, not necessarily completion, acceptance, approval, privacy clearance, authority assignment, validation success, publication readiness, export readiness, migration readiness, or downstream-use readiness.
+
+Review decisions SHOULD be captured in a Review Record, workflow output, provenance entry, validation result, approval record, or future governed review field when needed.
+
+### 12.6 `review_refs`
+
+`review_refs` is RECOMMENDED.
+
+`review_refs` identifies Review Records, review outputs, approval records, rejection records, repair records, escalation records, privacy reviews, authority reviews, validation reviews, source reviews, relationship reviews, or workflow logs associated with the Knowledge Record.
+
+Default recommended value when used:
+
+```yaml
+review_refs: []
+```
+
+Example:
+
+```yaml
+review_refs:
+  - REVIEW-0001
+```
+
+`review_refs` SHOULD be used when review decisions affect lifecycle state, authority level, privacy classification, validation state, publication, export, migration, or downstream use.
+
+`review_refs` MUST NOT replace `human_reviewer`.
+
+`review_refs` MUST NOT replace `review_required`.
+
+`review_refs` MUST NOT imply approval unless the referenced review record explicitly records an approval decision within a governed approval scope.
+
+### 12.7 `agent_activity_refs`
+
+`agent_activity_refs` is RECOMMENDED.
+
+`agent_activity_refs` identifies Agent Activity Records, agent outputs, agent validation reports, agent metadata proposals, agent relationship proposals, agent summaries, agent extraction reports, agent review reports, agent import reports, agent migration reports, or other agent-generated artifacts associated with the Knowledge Record.
+
+Default recommended value when used:
+
+```yaml
+agent_activity_refs: []
+```
+
+Example:
+
+```yaml
+agent_activity_refs:
+  - AG-ACT-0001
+```
+
+`agent_activity_refs` SHOULD be used when `agent_assisted` is `true`.
+
+`agent_activity_refs` SHOULD be used when agent activity affects metadata, source references, provenance, relationships, lifecycle state, authority level, privacy classification, validation state, review routing, publication, export, migration, or downstream use.
+
+`agent_activity_refs` MUST NOT replace provenance.
+
+`agent_activity_refs` MUST NOT replace review.
+
+`agent_activity_refs` MUST NOT imply approval, authority, validation success, privacy clearance, publication permission, export permission, migration readiness, or downstream-use readiness.
+
+## 13. Field Value and Compatibility Rules
+
+Field values define the content assigned to SC-0001 metadata fields.
+
+Field values MUST remain explicit, readable, portable, reviewable, and implementation-independent.
+
+A field value MUST preserve the governed meaning of the field.
+
+A field value MUST NOT rely on hidden application state, folder placement, filename conventions, user-interface behavior, plugin behavior, database internals, agent memory, workflow memory, implementation defaults, or undocumented conventions where the value affects governed meaning.
+
+SC-0001 recognizes the following bootstrap value forms:
+
+- text values;
+- controlled vocabulary values;
+- boolean values;
+- date values;
+- list values;
+- structured object values;
+- placeholder values.
+
+A text value is a human-readable string used for descriptive, explanatory, or reference information.
+
+Example:
+
+```yaml
+title: Knowledge Record Metadata Field Specification
+```
+
+A controlled vocabulary value is a value selected from an allowed value set defined by SC-0001 or a future governed specification.
+
+Example:
+
+```yaml
+lifecycle_state: draft
+```
+
+A boolean value is a true-or-false value.
+
+Example:
+
+```yaml
+review_required: true
+agent_assisted: false
+```
+
+A date value records a date or future governed datetime value.
+
+Example:
+
+```yaml
+created: 2026-06-28
+updated: 2026-06-28
+```
+
+A list value records zero, one, or many entries.
+
+Example:
+
+```yaml
+source_refs:
+  - SRC-0001
+  - SRC-0002
+```
+
+An empty list is represented as:
+
+```yaml
+source_refs: []
+```
+
+A structured object value records nested information when simple text is not sufficient.
+
+Example:
+
+```yaml
+provenance:
+  created_by: human
+  created_method: manual
+  source_basis: human_created
+  agent_activity_refs: []
+  workflow_refs: []
+  review_refs: []
+```
+
+A placeholder value records that information is unknown, pending, unavailable, unassigned, not applicable, intentionally absent, or awaiting review.
+
+Example:
+
+```yaml
+object_id: TBD
+human_reviewer: unassigned
+source_refs: []
+```
+
+Field values SHOULD use lowercase snake_case when they are controlled vocabulary values.
+
+Example:
+
+```yaml
+validation_state: valid_with_warnings
+privacy_classification: private
+authority_level: unreviewed
+```
+
+Field values SHOULD NOT use inconsistent capitalization, spacing, spelling, punctuation, or synonyms when a controlled vocabulary is defined.
+
+Avoid inconsistent values such as:
+
+```yaml
+validation_state: Valid With Warnings
+privacy_classification: Private Use
+authority_level: not reviewed
+```
+
+unless a future governed specification explicitly defines mapping rules for those values.
+
+A field value MUST NOT silently change meaning during import, export, migration, backup, restoration, synchronization, indexing, publication, agent processing, workflow processing, or implementation replacement.
+
+A compliant implementation MAY map SC-0001 field values to implementation-specific values only when the mapping is documented, reviewable, and reversible where practical.
+
+A field value mapping MUST NOT cause:
+
+- Object Identity confusion;
+- record identity confusion;
+- title confusion;
+- record-type confusion;
+- source-reference loss;
+- provenance loss;
+- relationship ambiguity;
+- lifecycle-state confusion;
+- authority confusion;
+- privacy exposure;
+- validation error;
+- review-routing error;
+- agent-permission confusion;
+- workflow-routing error;
+- import ambiguity;
+- export ambiguity;
+- migration loss;
+- publication error;
+- downstream-use error;
+- governance drift.
+
+A future specification MAY define stricter field value rules, expanded allowed values, deprecated values, legacy mappings, implementation mappings, validator mappings, import mappings, export mappings, migration mappings, or serialization mappings.
+
+Such future rules MUST preserve the governed meaning of SC-0001 fields or define a reviewed compatibility path.
+
+## 14. Validation Expectations
+
+SC-0001 defines metadata-field validation expectations for bare usable Knowledge Records.
+
+SC-0001 does not define a complete validation engine.
+
+SC-0001 does not define a complete conformance test suite.
+
+SC-0001 does not define validator tooling, error-code syntax, warning-code syntax, automation scripts, implementation behavior, workflow behavior, or agent prompts.
+
+Those concerns belong to future validation specifications, validator profiles, workflow specifications, agent specifications, implementation profiles, operational guides, and conformance tools.
+
+A Knowledge Record satisfies SC-0001 metadata-field validation only when the applicable SC-0001 metadata expectations are met within the defined validation scope.
+
+SC-0001 metadata-field validation SHOULD check at minimum whether:
+
+- all required fields are present;
+- required fields use valid field names;
+- field names follow SC-0001 naming rules;
+- controlled vocabulary fields use allowed bootstrap values or governed future values;
+- placeholder values are used consistently;
+- placeholder values do not hide required review;
+- list fields are represented as lists;
+- structured fields remain readable and inspectable;
+- `object_id` remains distinct from `record_id`;
+- `object_id` is not replaced by title, filename, folder path, alias, tag, implementation ID, workflow ID, agent ID, validation ID, import ID, export ID, or migration ID;
+- `record_id` remains distinct from `object_id`;
+- `record_type` uses a bootstrap value or governed future value;
+- `title` is present;
+- `summary` is present;
+- `lifecycle_state` is present and distinct from authority, privacy, validation, workflow state, agent state, storage state, and implementation state;
+- `authority_level` is present and distinct from lifecycle, privacy, validation, source reliability, agent confidence, workflow completion, and implementation visibility;
+- `privacy_classification` is present and distinct from lifecycle, authority, validation, approval, publication status, export status, and implementation visibility;
+- `validation_state` is present and distinct from lifecycle, authority, privacy, approval, publication permission, export permission, migration readiness, and downstream-use permission;
+- `source_refs` is present and represented as a list;
+- `provenance` is present;
+- `relationships` is present and represented as a list;
+- `created` is present;
+- `updated` is present;
+- `review_required` is present and boolean;
+- `agent_assisted` is present and boolean;
+- `human_reviewer` is present;
+- agent assistance is traceable when `agent_assisted` is `true`;
+- review need is visible when review-triggering conditions apply;
+- field values remain implementation-independent;
+- field values remain portable across import, export, migration, backup, restoration, synchronization, indexing, publication, workflow activity, agent activity, and implementation replacement.
+
+A missing required field is a validation error within SC-0001 scope.
+
+An invalid controlled vocabulary value is a validation error within SC-0001 scope unless a governed mapping or future specification explicitly permits it.
+
+A required field populated with an inappropriate placeholder value SHOULD create a validation warning or validation error depending on the applicable validation scope.
+
+An omitted recommended field SHOULD create a validation warning only when the field materially affects reviewability, portability, source traceability, provenance, relationship clarity, validation, maintenance, import, export, migration, agent reliability, workflow reliability, or downstream use.
+
+An omitted optional field SHOULD NOT create a validation issue unless a future governed specification, object-type rule, workflow, implementation profile, or validation profile requires it.
+
+A metadata-field validator MUST NOT overstate its scope.
+
+A validator that checks only SC-0001 metadata fields MUST NOT claim full Knowledge Record validation.
+
+A validator that checks only field presence MUST NOT claim full metadata validation.
+
+A validator that checks only Markdown syntax MUST NOT claim SC-0001 conformance unless it also checks applicable SC-0001 field expectations.
+
+A validator that checks SC-0001 conformance MUST NOT imply approval.
+
+A validator that checks SC-0001 conformance MUST NOT imply authority.
+
+A validator that checks SC-0001 conformance MUST NOT imply privacy clearance.
+
+A validator that checks SC-0001 conformance MUST NOT imply publication permission.
+
+A validator that checks SC-0001 conformance MUST NOT imply export permission.
+
+A validator that checks SC-0001 conformance MUST NOT imply migration readiness.
+
+A validator that checks SC-0001 conformance MUST NOT imply downstream-use readiness.
+
+Agent-generated validation results MUST remain reviewable where validation affects meaning, authority, privacy, lifecycle handling, publication, export, migration, governance, or downstream use.
+
+Workflow-generated validation results MUST remain traceable where validation affects review, approval, rejection, repair, routing, authority, privacy, publication, export, migration, or downstream use.
+
+Validation results SHOULD identify the validation scope.
+
+Example validation scope:
+
+```yaml
+validation_scope: SC-0001 metadata field validation
+```
+
+Validation results SHOULD identify whether validation was performed by a human, agent, workflow, tool, implementation, import process, export process, migration process, or other validator.
+
+Example:
+
+```yaml
+validated_by: agent
+validation_scope: SC-0001 metadata field validation
+validation_result: valid_with_warnings
+```
+
+Detailed validation result storage belongs to VALID-0001, TEMPLATE-0004, future validation specifications, review records, workflow logs, or agent activity records.
+
+SC-0001 only defines the metadata-field expectations those later artifacts should validate against.
+
+## 15. Conformance and Success Criteria
+
+SC-0001 conformance means that a Knowledge Record satisfies the metadata-field expectations defined by this specification within a stated scope.
+
+SC-0001 conformance does not mean the Knowledge Record is fully approved, authoritative, public, exportable, publishable, migratable, complete, current, or ready for downstream use.
+
+SC-0001 defines three bootstrap conformance levels:
+
+- Non-Conformant;
+- Bare Usable Conformant;
+- Extended Conformant.
+
+A Knowledge Record is Non-Conformant when it fails one or more mandatory SC-0001 requirements.
+
+A Knowledge Record is Bare Usable Conformant when it includes all required SC-0001 fields, uses valid field names, uses valid bootstrap values or approved placeholder values, preserves required distinctions, and remains inspectable, portable, reviewable, and implementation-independent.
+
+A Knowledge Record is Extended Conformant when it satisfies Bare Usable Conformance and also includes applicable recommended fields, structured provenance where practical, structured relationships where practical, review references where applicable, agent activity references where applicable, and any additional governed future specification requirements within the stated scope.
+
+A Knowledge Record MUST NOT be marked Bare Usable Conformant if it omits any required SC-0001 field.
+
+A Knowledge Record MUST NOT be marked Bare Usable Conformant if a required field is present but uses a value that violates SC-0001 field rules.
+
+A Knowledge Record MUST NOT be marked Bare Usable Conformant if it collapses Object Identity, Record Identity, Lifecycle State, Authority Level, Privacy Classification, Validation State, Source References, Provenance, Relationships, review responsibility, or agent assistance into ambiguous or implementation-specific signals.
+
+A Knowledge Record MUST NOT be marked Bare Usable Conformant if field meaning depends on hidden application state, folder placement, filename convention, plugin behavior, database internals, agent memory, workflow memory, or undocumented implementation behavior.
+
+A Bare Usable Conformant Knowledge Record SHOULD allow a future human, agent, workflow, validator, storage system, import process, export process, migration process, or implementation to determine:
+
+- what Knowledge Object the record represents;
+- what specific Knowledge Record is being inspected;
+- what type of record it is;
+- what the record is called;
+- what the record is about;
+- what lifecycle state applies;
+- what authority level applies;
+- what privacy classification applies;
+- what validation state applies;
+- what Source References are known;
+- what provenance is known;
+- what relationships are known, proposed, or established;
+- when the record was created;
+- when the record was last materially updated;
+- whether review is required;
+- whether an agent assisted;
+- who is assigned for human review;
+- whether unresolved placeholders remain;
+- whether the record requires repair, review, validation, privacy review, authority review, source review, relationship review, publication review, export review, migration review, or downstream-use review.
+
+SC-0001 is successful when TEMPLATE-0001 can use its fields directly to create a usable Knowledge Record template.
+
+SC-0001 is successful when TEMPLATE-0002 can reference its source, provenance, review, and relationship fields during Source Material intake.
+
+SC-0001 is successful when TEMPLATE-0003 can reference its agent-related fields during Agent Activity Record creation.
+
+SC-0001 is successful when TEMPLATE-0004 can reference its review-related fields during Review Record creation.
+
+SC-0001 is successful when VALID-0001 can validate the presence, naming, value, placeholder, compatibility, and review expectations of bare usable Knowledge Records.
+
+SC-0001 is successful when AG-SPEC-0001 can instruct agents to read, populate, inspect, and report on metadata fields without exceeding agent authority.
+
+SC-0001 is successful when AG-SPEC-0002 can define subagent role profiles that propose metadata, relationships, source references, provenance, validation findings, and review routing without becoming unreviewable authorities.
+
+SC-0001 is successful when WF-SPEC-0001 can use its fields during controlled ingestion without relying on hidden workflow state.
+
+SC-0001 is successful when a Knowledge Record remains understandable after:
+
+- file renaming;
+- folder movement;
+- storage reorganization;
+- import;
+- export;
+- migration;
+- backup;
+- restoration;
+- synchronization;
+- indexing;
+- publication review;
+- agent processing;
+- workflow processing;
+- implementation replacement.
+
+SC-0001 is successful when metadata remains useful without becoming excessive.
+
+SC-0001 is successful when field structure supports daily use while preserving long-term identity, traceability, privacy, validation, reviewability, portability, compatibility, and governance.
+
+SC-0001 is complete for bare usable deployment when:
+
+- all 15 sections are present;
+- required fields are defined;
+- recommended fields are identified where needed;
+- placeholder values are defined;
+- field naming rules are defined;
+- field value rules are defined;
+- lifecycle, authority, privacy, and validation fields are distinct;
+- source, provenance, and relationship fields are distinct;
+- date, review, and agent fields are distinct;
+- validation expectations are scoped;
+- conformance criteria are defined;
+- downstream templates and validation checklists can rely on the field set.
+
+End of SC-0001.
