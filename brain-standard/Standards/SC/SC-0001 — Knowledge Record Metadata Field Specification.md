@@ -284,3 +284,289 @@ A compliant implementation MAY represent SC-0001 metadata fields through Markdow
 For bare usable deployment, Markdown-compatible metadata is RECOMMENDED because it remains human-readable, AI-readable, portable, inspectable, and easy to validate.
 
 Regardless of representation method, field meaning MUST remain explicit, portable, reviewable, and governed by this specification and higher-authority standards.
+
+## 4. Metadata Representation Model
+
+SC-0001 defines metadata fields as implementation-independent named fields.
+
+A compliant Knowledge Record MAY represent SC-0001 metadata through different technical formats, provided that field meaning remains explicit, inspectable, portable, and governed.
+
+For bare usable deployment, the RECOMMENDED representation is Markdown-compatible front matter because it is:
+
+- human-readable;
+- AI-readable;
+- plain-text compatible;
+- easy to inspect without specialized tooling;
+- easy to copy, migrate, validate, and version;
+- compatible with many note-taking, repository, documentation, and automation environments.
+
+The recommended Markdown-compatible representation uses a field-name and field-value structure.
+
+Example representation pattern:
+
+```yaml
+field_name: field_value
+```
+
+SC-0001 does not require YAML specifically.
+
+A compliant implementation MAY represent the same fields through:
+
+- Markdown front matter;
+- Markdown tables;
+- document headers;
+- sidecar metadata files;
+- structured JSON;
+- database fields;
+- graph properties;
+- API objects;
+- implementation-specific field mappings;
+- future governed metadata formats.
+
+The representation format does not define the meaning of the field.
+
+Field meaning is defined by SC-0001 and the higher-authority standards.
+
+A metadata representation is compliant only if a future human, agent, workflow, validator, storage system, import process, export process, migration process, or implementation can determine:
+
+- the exact field name;
+- the field value;
+- whether the field is required, recommended, optional, or conditional;
+- what governed meaning the field carries;
+- whether the value is known, unknown, pending, unavailable, not applicable, or awaiting review;
+- whether the value was assigned by a human, agent, workflow, import process, migration process, or implementation;
+- whether the value affects identity, provenance, relationships, lifecycle state, authority, privacy, validation, workflow routing, agent handling, export, publication, migration, or downstream use.
+
+Metadata fields MUST NOT depend only on:
+
+- folder placement;
+- filename;
+- tags;
+- visual formatting;
+- user-interface state;
+- plugin behavior;
+- database internals;
+- search ranking;
+- graph position;
+- backlink behavior;
+- agent memory;
+- workflow memory;
+- undocumented implementation conventions.
+
+Those signals MAY support usability, discovery, routing, or automation.
+
+They MUST NOT replace explicit metadata fields where the field affects governed meaning, validation, review, authority, privacy, provenance, relationship handling, lifecycle handling, publication, export, migration, or downstream use.
+
+A compliant implementation SHOULD preserve SC-0001 field names during export and migration when practical.
+
+If an implementation must map SC-0001 fields to another representation, the mapping SHOULD be documented and reviewable.
+
+A field mapping MUST NOT silently collapse, rename, reinterpret, discard, hide, or replace SC-0001 fields in a way that causes:
+
+- identity confusion;
+- source-reference loss;
+- provenance loss;
+- relationship ambiguity;
+- lifecycle-state confusion;
+- authority confusion;
+- privacy exposure;
+- validation failure;
+- review failure;
+- workflow routing error;
+- agent permission confusion;
+- export ambiguity;
+- migration loss;
+- governance drift.
+
+## 5. Field Requirement Levels
+
+SC-0001 uses four field requirement levels:
+
+- Required;
+- Recommended;
+- Optional;
+- Conditional.
+
+A Required Field MUST be present in every Knowledge Record unless a future governed specification explicitly defines a narrower exception.
+
+A Recommended Field SHOULD be present when practical because it improves interpretation, reviewability, portability, validation, workflow routing, agent reliability, maintenance, import, export, migration, or downstream use.
+
+An Optional Field MAY be included when useful but is not required for basic Knowledge Record conformance unless another governed specification, object-type rule, implementation profile, workflow, validator, or template requires it.
+
+A Conditional Field becomes required when a defined condition applies.
+
+Examples of conditional field behavior include:
+
+- if an agent assisted with the record, agent-related fields become required;
+- if Source Material supports the record, source-reference fields become required;
+- if the record was imported, import-provenance fields become required;
+- if the record was migrated, migration-provenance fields become required;
+- if the record is reviewed, review-related fields become required;
+- if the record is approved, approval-scope fields become required;
+- if privacy restrictions apply, privacy-scope or handling fields become required;
+- if relationships are proposed or established, relationship fields become required;
+- if validation has been performed, validation-result fields become required.
+
+A field being required does not mean the final value is known.
+
+When a required value is not yet known, the field MUST still be present with an approved placeholder value.
+
+Placeholder values preserve structure and make missing information visible.
+
+A missing required field creates a structural validation issue.
+
+A present field with a placeholder value creates a review or completion issue unless the placeholder value is permitted for the record’s lifecycle state and validation scope.
+
+Field requirement levels do not determine approval.
+
+A Knowledge Record may contain all required fields and still remain Draft, Pending Review, Needs Repair, Quarantined, Rejected, Archived, Deprecated, Superseded, or otherwise not approved.
+
+Field completeness does not equal approval.
+
+Validation success does not equal approval.
+
+Agent completion does not equal approval.
+
+Workflow completion does not equal approval.
+
+Storage placement does not equal approval.
+
+Implementation visibility does not equal approval.
+
+Field requirement levels are intended to make Knowledge Records easier to validate, review, route, repair, migrate, export, and maintain.
+
+They are not intended to make metadata burdensome or excessive.
+
+SC-0001 SHOULD require only fields that materially improve identity preservation, interpretation, source traceability, provenance, relationship clarity, lifecycle handling, authority handling, privacy protection, validation, reviewability, portability, agent reliability, workflow reliability, compatibility, or long-term maintainability.
+
+## 6. Field Naming Rules
+
+SC-0001 field names MUST be stable, explicit, readable, and implementation-independent.
+
+Field names SHOULD use lowercase snake_case.
+
+Example:
+
+```yaml
+object_id: TBD
+record_type: concept
+lifecycle_state: draft
+```
+
+Field names MUST be written consistently across templates, validation checklists, agent instructions, workflow runbooks, implementation profiles, import mappings, export mappings, migration mappings, and future specifications unless a governed revision changes the field name.
+
+Field names SHOULD be concise but not cryptic.
+
+A field name SHOULD clearly indicate the kind of information the field contains.
+
+Preferred examples:
+
+```yaml
+object_id
+record_type
+lifecycle_state
+authority_level
+privacy_classification
+validation_state
+source_refs
+created
+updated
+review_required
+agent_assisted
+```
+
+Avoid unclear or overly broad names such as:
+
+```yaml
+id
+type
+state
+status
+refs
+notes
+flag
+data
+misc
+```
+
+Broad field names MAY appear in implementation-specific contexts, but they SHOULD NOT be used as governed SC-0001 field names where they could cause ambiguity.
+
+A field name MUST NOT imply authority that the field does not have.
+
+For example:
+
+```yaml
+approved: true
+```
+
+SHOULD NOT be used as the primary authority or lifecycle control field because it may confuse review state, approval scope, lifecycle state, validation state, and authority level.
+
+Instead, SC-0001 SHOULD use explicit fields such as:
+
+```yaml
+lifecycle_state: approved
+authority_level: governed
+review_required: false
+human_reviewer: reviewer_name_or_id
+```
+
+A field name MUST NOT make an implementation the standard.
+
+Avoid implementation-specific field names such as:
+
+```yaml
+obsidian_status
+notion_database_id
+codex_state
+plugin_tags
+```
+
+unless the field is clearly marked as implementation-specific metadata in a future implementation profile.
+
+A field name MUST NOT make a workflow state, agent state, validation result, or storage location appear to be Object Identity.
+
+For example:
+
+```yaml
+folder_id
+draft_number
+agent_record_id
+validation_id
+```
+
+MUST NOT replace `object_id`.
+
+A field name SHOULD remain useful across:
+
+- file renaming;
+- folder movement;
+- storage reorganization;
+- import;
+- export;
+- migration;
+- backup;
+- restoration;
+- synchronization;
+- indexing;
+- agent processing;
+- workflow processing;
+- implementation replacement.
+
+Field names defined by SC-0001 SHOULD NOT be changed casually.
+
+A governed field-name change SHOULD include:
+
+- rationale for the change;
+- compatibility impact;
+- migration impact;
+- template impact;
+- validator impact;
+- workflow impact;
+- agent impact;
+- implementation impact;
+- deprecated field handling where needed;
+- review and approval under the applicable governance process.
+
+A future specification MAY define aliases, legacy field mappings, deprecated field names, or implementation-specific mappings.
+
+Such mappings MUST preserve the governed meaning of the SC-0001 field.
