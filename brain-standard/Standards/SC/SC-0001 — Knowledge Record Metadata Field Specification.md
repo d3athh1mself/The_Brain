@@ -3,7 +3,7 @@
 Document ID: SC-0001
 Title: Knowledge Record Metadata Field Specification
 Version: 0.1.0
-Status: Draft
+Status: Approved
 Created: 2026-06-28
 Last Updated: 2026-06-28
 Authority: Specification
